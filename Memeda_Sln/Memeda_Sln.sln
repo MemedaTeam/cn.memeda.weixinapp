@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Infrastruncture Layer", "00 Infrastruncture Layer", "{EF62E4A8-3932-4B49-B7D8-D328549D4A3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framwork", "Framwork\Framwork.csproj", "{206A0979-44CC-42D5-BCE8-93ED389D0771}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Model", "00 Model", "{9D6AD825-6498-4E78-AB0C-3CAC740038DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.Common", "Model.Common\Model.Common.csproj", "{1619D60E-A30B-4785-8388-F8E27A66D2F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Presentation Layer", "01 Presentation Layer", "{A715FFBB-3EB7-4AE8-BC2E-4D2AEB80959F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cn.Memeda.WeixinApp", "Cn.Memeda.WeixinApp\Cn.Memeda.WeixinApp.csproj", "{34DCB033-2574-4387-AC98-D266069699BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineWeb.Common", "OnlineWeb.Common\OnlineWeb.Common.csproj", "{75C2F490-7483-4CE6-AB1C-4BEAE2BC6466}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Business Layer", "03 Business Layer", "{CD897649-E5FA-4F9E-8ACB-FBD029F1EE31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.Common", "Business.Common\Business.Common.csproj", "{25AACD9B-9264-45A0-98C3-7A4C4AAE9FFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{206A0979-44CC-42D5-BCE8-93ED389D0771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206A0979-44CC-42D5-BCE8-93ED389D0771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206A0979-44CC-42D5-BCE8-93ED389D0771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206A0979-44CC-42D5-BCE8-93ED389D0771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1619D60E-A30B-4785-8388-F8E27A66D2F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1619D60E-A30B-4785-8388-F8E27A66D2F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1619D60E-A30B-4785-8388-F8E27A66D2F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1619D60E-A30B-4785-8388-F8E27A66D2F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34DCB033-2574-4387-AC98-D266069699BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34DCB033-2574-4387-AC98-D266069699BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34DCB033-2574-4387-AC98-D266069699BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34DCB033-2574-4387-AC98-D266069699BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C2F490-7483-4CE6-AB1C-4BEAE2BC6466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C2F490-7483-4CE6-AB1C-4BEAE2BC6466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C2F490-7483-4CE6-AB1C-4BEAE2BC6466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C2F490-7483-4CE6-AB1C-4BEAE2BC6466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25AACD9B-9264-45A0-98C3-7A4C4AAE9FFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25AACD9B-9264-45A0-98C3-7A4C4AAE9FFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25AACD9B-9264-45A0-98C3-7A4C4AAE9FFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25AACD9B-9264-45A0-98C3-7A4C4AAE9FFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{206A0979-44CC-42D5-BCE8-93ED389D0771} = {EF62E4A8-3932-4B49-B7D8-D328549D4A3B}
+		{1619D60E-A30B-4785-8388-F8E27A66D2F9} = {9D6AD825-6498-4E78-AB0C-3CAC740038DC}
+		{34DCB033-2574-4387-AC98-D266069699BC} = {A715FFBB-3EB7-4AE8-BC2E-4D2AEB80959F}
+		{75C2F490-7483-4CE6-AB1C-4BEAE2BC6466} = {A715FFBB-3EB7-4AE8-BC2E-4D2AEB80959F}
+		{25AACD9B-9264-45A0-98C3-7A4C4AAE9FFD} = {CD897649-E5FA-4F9E-8ACB-FBD029F1EE31}
+	EndGlobalSection
+EndGlobal
