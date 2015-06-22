@@ -1,0 +1,35 @@
+﻿body {
+    font-family: "microsoft yahei";
+    color:#333;
+}
+.navbar {
+    background: #ed6a02;
+    border-bottom: 1px solid #e01b01;
+    text-align:center;
+}
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+    color:#fff;
+}
+.navbar-inverse .navbar-brand {
+    font-size:2em;
+
+    float:none;
+    line-height:50px;
+    margin-left:60px;
+}
+.navbar-inverse .navbar-toggle,
+.navbar-inverse .navbar-collapse,
+ .navbar-inverse .navbar-form {
+border-color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a:hover, 
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-brand:hover, 
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-toggle:hover,
+ .navbar-inverse .navbar-toggle:focus
+ {
+    color: #333;
+    background-color:transparent;
+}

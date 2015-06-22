@@ -1,58 +1,45 @@
 ﻿@model Cn.Memeda.WeixinApp.Models.LoginViewModel
 
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "么么哒登陆";
 }
-
-<h2>@ViewBag.Title.</h2>
+<link href="~/Content/Login.css" rel="stylesheet" type="text/css" />
+<h2>么么哒登陆</h2>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
+                <h4>一键登录</h4><span class="red error-message"></span>
+                <div class="clearfix"></div>
                 <hr />
-                @Html.ValidationSummary(true)
-                <div class="form-group">
-                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.UserName)
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password)
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                    </div>
-                </div>
-                <p>
-                    @Html.ActionLink("Register", "Register") if you don't have a local account.
-                </p>
+                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_login">
+                  <tr class="table_border">
+                      <td width="18.16666666666667%"><span>+86</span></td>
+                      <td><input type="text" class="login_text" id="phone-number" placeholder="请输入您手机号码" value="" /></td>
+                      </tr>
+                      <tr class="table_border">
+                        <td><span>验证码</span></td>
+                        <td><div class="identi_code"><input type="text" placeholder="请输入验证码" class="login_text" id="sms-valid-code" value="" /><a id="btn-sms-valid-code">发送验证码</a></div></td>
+                      </tr>
+                      <tr>
+                        <td align="right" colspan="2"><p class="protocol">注册账号就视为阅读过<a href="#">《么么达用户协议》</a></p></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><input class="button_sure" id="btn-login" type="button" value="确定" /></td>
+                      </tr>
+                </table>
             }
         </section>
     </div>
-    <div class="col-md-4">
+    @*<div class="col-md-4">
         <section id="socialLoginForm">
             @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
         </section>
-    </div>
+    </div>*@
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" src="~/Scripts/Account/Login.js"></script>
 }
