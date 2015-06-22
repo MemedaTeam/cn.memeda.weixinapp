@@ -1,1 +1,11 @@
 E:\project\麦克\memeda_project\Memeda_Sln\Framwork\obj\Debug\Framwork.csprojResolveAssemblyReference.cache
+E:\cn.memeda.weixinapp\Memeda_Sln\Framwork\bin\Debug\Framwork.dll
+E:\cn.memeda.weixinapp\Memeda_Sln\Framwork\bin\Debug\Framwork.pdb
+E:\cn.memeda.weixinapp\Memeda_Sln\Framwork\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Caching.dll
+E:\cn.memeda.weixinapp\Memeda_Sln\Framwork\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Security.dll
+E:\cn.memeda.weixinapp\Memeda_Sln\Framwork\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\cn.memeda.weixinapp\Memeda_Sln\Framwork\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\cn.memeda.weixinapp\Memeda_Sln\Framwork\bin\Debug\Microsoft.Practices.Unity.Interception.dll
+E:\cn.memeda.weixinapp\Memeda_Sln\Framwork\bin\Debug\Microsoft.Practices.Unity.dll
+E:\cn.memeda.weixinapp\Memeda_Sln\Framwork\obj\Debug\Framwork.dll
+E:\cn.memeda.weixinapp\Memeda_Sln\Framwork\obj\Debug\Framwork.pdb

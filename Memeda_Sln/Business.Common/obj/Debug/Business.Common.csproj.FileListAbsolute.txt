@@ -1,4 +1,0 @@
-E:\project\麦克\memeda_project\Memeda_Sln\Business.Common\bin\Debug\Business.Common.dll
-E:\project\麦克\memeda_project\Memeda_Sln\Business.Common\bin\Debug\Business.Common.pdb
-E:\project\麦克\memeda_project\Memeda_Sln\Business.Common\obj\Debug\Business.Common.dll
-E:\project\麦克\memeda_project\Memeda_Sln\Business.Common\obj\Debug\Business.Common.pdb

@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.Net;
 using System.Web;
-using Framework.Logs;
+using Framework.Log;
 
 namespace Framework.Web
 {

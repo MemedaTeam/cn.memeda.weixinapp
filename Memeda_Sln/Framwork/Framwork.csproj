@@ -33,8 +33,14 @@
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching">
       <HintPath>..\..\CommDll\EntlDll.5.0\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security">
+      <HintPath>..\..\CommDll\EntlDll.5.0\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,11 +65,21 @@
     <Compile Include="Common\RequestUtil.cs" />
     <Compile Include="Common\StringUtil.cs" />
     <Compile Include="Common\XmlSerializeHelper.cs" />
+    <Compile Include="Files\DsToExcel.cs" />
+    <Compile Include="Files\FileInfo.cs" />
+    <Compile Include="Files\FileMap.cs" />
+    <Compile Include="Files\FileOperator.cs" />
+    <Compile Include="Files\FileZip.cs" />
     <Compile Include="HttpUtil\WebHttpHelper.cs" />
     <Compile Include="HttpUtil\WebRequestHelper.cs" />
     <Compile Include="Json\JsonUtil.cs" />
     <Compile Include="Logs\LogHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\CookieDESCryptographer.cs" />
+    <Compile Include="Security\DataSecurity.cs" />
+    <Compile Include="Security\Encrypt.cs" />
+    <Compile Include="Security\SecurityUtil.cs" />
+    <Compile Include="Security\TMPayDataSecurity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
