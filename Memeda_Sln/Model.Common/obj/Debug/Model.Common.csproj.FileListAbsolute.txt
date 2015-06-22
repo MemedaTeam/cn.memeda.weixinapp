@@ -1,0 +1,5 @@
+E:\project\麦克\memeda_project\Memeda_Sln\Model.Common\bin\Debug\Model.Common.dll
+E:\project\麦克\memeda_project\Memeda_Sln\Model.Common\bin\Debug\Model.Common.pdb
+E:\project\麦克\memeda_project\Memeda_Sln\Model.Common\obj\Debug\Model.Common.csprojResolveAssemblyReference.cache
+E:\project\麦克\memeda_project\Memeda_Sln\Model.Common\obj\Debug\Model.Common.dll
+E:\project\麦克\memeda_project\Memeda_Sln\Model.Common\obj\Debug\Model.Common.pdb
