@@ -3,11 +3,7 @@
 @{
     ViewBag.Title = "么么哒登陆";
 }
-@section css{
-    <link href="~/Content/Login.css" rel="stylesheet" type="text/css" />
-}
 <div class="container" style="padding-top: 34px;">
-    <h2>么么哒登陆</h2>
     <div class="row">
         <div class="col-md-12">
             <section id="loginForm">
@@ -45,5 +41,5 @@
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript" src="~/Scripts/Account/Login.js"></script>
+    @Scripts.Render("~/bundles/account")
 }
