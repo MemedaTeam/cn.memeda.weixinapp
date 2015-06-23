@@ -25,6 +25,8 @@ namespace Cn.Memeda.WeixinApp
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/public.css",
+                      "~/content/common.css",
                       "~/Content/site.css"));
         }
     }

@@ -6,12 +6,19 @@
     <title>么么哒 </title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/content/common.css" type="text/css" rel="stylesheet"/>
     @RenderSection("css", required: false)
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <body>
+        <!-----------头部开始--------------->
+        <header>
+            <div class="container">
+                <a href="javascript:history.go(-1);" class="pre_icon"><img src="/Content/images/liu_06.png"></a>
+                <div class="head_mid"><img src="/Content/images/liu_03.png"></div>
+            </div>
+        </header>
+        <!-----------头部结束--------------->
+        @RenderBody()
+        @*<div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -29,17 +36,17 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        @*<hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - 么么哒</p>
-        </footer>*@
-    </div>
+       
+        <div class="container body-content">
+                @RenderBody()
+            <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - 么么哒</p>
+                </footer>
+        </div>*@
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
 </html>
