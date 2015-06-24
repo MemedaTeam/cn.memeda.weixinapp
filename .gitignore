@@ -4,3 +4,5 @@
 /Memeda_Sln/Cn.Memeda.WeixinApp/bin
 /Memeda_Sln/Model.Common/bin
 /Memeda_Sln/OnlineWeb.Common/bin
+/Memeda_Sln/Cn.Memeda.WeixinApp/obj/Debug/*.pdb
+/Memeda_Sln/Cn.Memeda.WeixinApp/obj/Debug/*.cache

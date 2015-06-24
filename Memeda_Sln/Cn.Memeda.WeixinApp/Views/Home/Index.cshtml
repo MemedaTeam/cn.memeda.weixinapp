@@ -1,7 +1,12 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<div class="complex"><span>长原小区<a href="location.html"><img src="/Content/images/liu_14.png"></a></span></div>
+<div class="complex" id="indexcommuntity">
+    <a href="@Url.Action("Location","Home")">
+        <span>长原小区</span>
+        <img src="/Content/images/liu_14.png">
+    </a>
+</div>
 <div class="content browser_content">
     <ul class="product_menu">
         <li>
@@ -343,3 +348,36 @@
         </div>
     </div>
 </div>
+<!--商品详细信息弹出层-->
+<div class="fixed" style="display:none;"></div>
+<div class="product_detail" style="display:none;">
+    <a href="javascript:void(0)" class="close_detail"></a>
+    <div class="product_picture"><img class="" src="/Content/images/f2.jpg"></div>
+    <p class="product_name"><span>￥7.9</span><i>光明发酵乳</i></p>
+    <div class="shop_intro">
+        <div class="shop_name">商家：<span>光明便利店</span></div>
+        <div class="weight">规格：<span>135g</span></div>
+        <div class="activity">活动：<span>暂无</span></div>
+        <div class="add_car">
+            <a class="button_add_car" href="#">加入购物车</a>
+            <div class="count_group">
+                <div class="count_odd"></div>
+                <span class="now_count">1</span>
+                <div class="count_add"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--商品详细信息弹出层结束-->
+@section scripts{
+    <script type="text/javascript" src="/Scripts/common.js"></script>
+    <script type="text/javascript" src="/Scripts/windowsheight.js"></script>
+    <script src="~/Scripts/Index.js"></script>
+    <script>
+        var index = new IndexPage({
+            indexcommuntityUrl: "http://120.24.228.51:8080/20150623/weixin/community/index_community.jhtml",
+            communtityListUrl: "http://120.24.228.51:8080/20150623/weixin/community/list.jhtml"
+        });
+        //index.init();
+    </script>
+}
