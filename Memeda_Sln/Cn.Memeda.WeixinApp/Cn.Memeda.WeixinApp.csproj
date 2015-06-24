@@ -171,6 +171,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\block_07.png" />
+    <Content Include="Content\images\block_11.png" />
     <Content Include="Content\images\car_07.jpg" />
     <Content Include="Content\images\close.png" />
     <Content Include="Content\images\close1.png" />
@@ -189,9 +191,23 @@
     <Content Include="Content\images\liu_21.png" />
     <Content Include="Content\images\liu_23.png" />
     <Content Include="Content\images\liu_24.png" />
+    <Content Include="Content\images\men_11.jpg" />
+    <Content Include="Content\images\order1.jpg" />
+    <Content Include="Content\images\order2.jpg" />
+    <Content Include="Content\images\order_03.jpg" />
+    <Content Include="Content\images\order_06.jpg" />
+    <Content Include="Content\images\order_12.jpg" />
+    <Content Include="Content\images\order_16.jpg" />
+    <Content Include="Content\images\order_18.jpg" />
+    <Content Include="Content\images\order_19.jpg" />
+    <Content Include="Content\images\order_192.png" />
     <Content Include="Content\images\shop_03.jpg" />
+    <Content Include="Content\images\shop_17.jpg" />
+    <Content Include="Content\images\shop_27.jpg" />
+    <Content Include="Content\images\shop_28.jpg" />
     <Content Include="Content\images\s_27.png" />
     <Content Include="Content\images\s_30.png" />
+    <Content Include="Content\images\t_13.jpg" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\public.css" />
     <Content Include="favicon.ico" />
@@ -203,6 +219,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\Index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -240,6 +257,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\Location.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
