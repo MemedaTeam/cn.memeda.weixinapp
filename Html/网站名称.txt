@@ -1,0 +1,9 @@
+index.html: 浏览页
+location： 地区选择
+login_register：登陆注册
+order: 下单
+shopping_trolley: 购物车
+stores: 王阿姨的店
+order_mess: 订单信息
+
+备注:上传图片时 同一页面商品图片的宽高比例要一样 
