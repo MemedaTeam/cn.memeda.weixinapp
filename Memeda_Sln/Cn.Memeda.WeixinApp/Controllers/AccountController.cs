@@ -32,6 +32,7 @@ namespace Cn.Memeda.WeixinApp.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            ViewBag.subTitle = "一键登录";
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }

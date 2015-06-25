@@ -116,10 +116,6 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 .protocol { font-size: 0.9166666666666667em; padding-bottom: 0.5em; }
     .protocol a { color: #ed6a02; }
 .button_sure { background: #ed6a02; color: #ffffff; text-align: center; border-radius: 3px; font-size: 1.166666666666667em; line-height: 2.5em; display: block; border: none; width: 100%; }
-#loginForm { margin: 55px 0 0 0; }
-    #loginForm h4 { margin: 0; float: left; font-size: 1.2em; }
-    #loginForm .error-message { margin-left: 20px; float: left; color: #ff0000; font-size: .8em; }
-    #loginForm hr { margin-bottom: 2px; }
 
 /*小区选择*/
 .block_select { padding: 0.6666666666666667em 0; background: #ebebeb; }
@@ -258,6 +254,22 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 /*********************** tom 修改 end ********************/
 
 /*********************** xueqiang 修改 start ********************/
+#loginForm { margin: 55px 0 0 0; }
+    #loginForm .error-message { color: #ff0000; font-size: .8em; }
+.login_text {
+    width: 70%;
+}
+    #loginForm #login-count-down {
+        font-size:.5em;
+        background-color:#999999;
+        padding:5px 10px;   
+        top:.8em;       
+        cursor:text;     
+        display:none;
+    }
+        #loginForm #login-count-down:hover, #loginForm #login-count-down:active {
+            text-decoration:none;
+        }
 
 
 /*********************** xueqiang 修改 end ********************/

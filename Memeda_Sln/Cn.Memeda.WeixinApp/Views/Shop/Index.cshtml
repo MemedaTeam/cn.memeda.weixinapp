@@ -7,93 +7,47 @@
     <div class="stores">
         <div class="container">
             <div class="producter_row nobg">
-                <img class="fl shoper_img" src="images/liu_18.png">
+                <img class="fl shoper_img" id="shop-shopkeeper-image" src="/Content/images/liu_18.png">
                 <div class="shoper_mess fl">
-                    <p><span class="store_name">王阿姨的店</span><i>配</i></p>
+                    <p><span class="store_name" id="shop-shopkeeper">王阿姨的店</span><i>配</i></p>
                     <div class="saled_order">
-                        <img src="images/liu_23.png" class="star">
-                        <img src="images/liu_23.png" class="star">
-                        <img src="images/liu_23.png" class="star">
-                        <img src="images/liu_23.png" class="star">
-                        <img src="images/liu_23.png" class="star">
+                        <img src="/Content/images/liu_23.png" class="star">
+                        <img src="/Content/images/liu_23.png" class="star">
+                        <img src="/Content/images/liu_23.png" class="star">
+                        <img src="/Content/images/liu_23.png" class="star">
+                        <img src="/Content/images/liu_23.png" class="star">
                         已售100单
                     </div>
-                    <span>长原菜市场 | 新鲜蔬菜</span>
+                    <span id="shop-address">长原菜市场 | 新鲜蔬菜</span>
                 </div>
                 <div class="distance fl"><p>1.0公里</p></div>
                 <div class="clear"></div>
             </div>
         </div>
-        <ul class="producter_con_shop">
-            <li>
-                <a href="#">
-                    <img src="images/shop_03.jpg" class="fruit_img">
-                    <p><span class="fr"><i class="weight">500g</i>/份</span><i>菠菜</i></p>
-                    <div class="product_price"><img src="images/car_07.jpg" /><i>￥25.5</i><span>￥29.5</span></div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/shop_03.jpg" class="fruit_img">
-                    <p><span class="fr"><i class="weight">100g</i>/份</span><i>香菜</i></p>
-                    <div class="product_price"><img src="images/car_07.jpg" /><i>￥25.5</i><span>￥29.5</span></div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/shop_03.jpg" class="fruit_img">
-                    <p><span class="fr"><i class="weight">50g</i>/份</span><i>芹菜</i></p>
-                    <div class="product_price"><img src="images/car_07.jpg" /><i>￥25.5</i><span>￥29.5</span></div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/shop_03.jpg" class="fruit_img">
-                    <p><span class="fr"><i class="weight">1000g</i>/份</span><i>白菜</i></p>
-                    <div class="product_price"><img src="images/car_07.jpg" /><i>￥25.5</i><span>￥29.5</span></div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/shop_03.jpg" class="fruit_img">
-                    <p><span class="fr"><i class="weight">400g</i>/份</span><i>菠菜</i></p>
-                    <div class="product_price"><img src="images/car_07.jpg" /><i>￥25.5</i><span>￥29.5</span></div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/shop_03.jpg" class="fruit_img">
-                    <p><span class="fr"><i class="weight">500g</i>/份</span><i>菠菜</i></p>
-                    <div class="product_price"><img src="images/car_07.jpg" /><i>￥25.5</i><span>￥29.5</span></div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/shop_03.jpg" class="fruit_img">
-                    <p><span class="fr"><i class="weight">500g</i>/份</span><i>菠菜</i></p>
-                    <div class="product_price"><img src="images/car_07.jpg" /><i>￥25.5</i><span>￥29.5</span></div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/shop_03.jpg" class="fruit_img">
-                    <p><span class="fr"><i class="weight">500g</i>/份</span><i>菠菜</i></p>
-                    <div class="product_price"><img src="images/car_07.jpg" /><i>￥25.5</i><span>￥29.5</span></div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/shop_03.jpg" class="fruit_img">
-                    <p><span class="fr"><i class="weight">500g</i>/份</span><i>菠菜</i></p>
-                    <div class="product_price"><img src="images/car_07.jpg" /><i>￥25.5</i><span>￥29.5</span></div>
-                </a>
-            </li>
-            <div class="clear"></div>
+        <ul class="producter_con_shop" id="shop-goods-list">
+            
         </ul>
-        <div class="car_shop"><img src="images/s_27.png"><span>1</span></div>
+        <div class="car_shop"><img src="/Content/images/s_27.png"><span>1</span></div>
     </div>
 </div>
 <!-----------内容结束--------------->
 <!--商品详细信息弹出层-->
 <div class="fixed" style="display:none;"></div>
-<div class="product_detail" style="display:none;"></div>
+<div class="product_detail" style="display:none;">
+    <a href="javascript:void(0)" class="close_detail"></a>
+    <div class="product_picture"><img class="" src="/Content/images/f2.jpg"></div>
+    <p class="product_name"><span>￥7.9</span><i>光明发酵乳</i></p>
+    <div class="shop_intro">
+        <div class="shop_name">商家：<span>光明便利店</span></div>
+        <div class="weight">规格：<span>135g</span></div>
+        <div class="activity">活动：<span>暂无</span></div>
+        <div class="add_car">
+            <a class="button_add_car" href="#">加入购物车</a>
+            <div class="count_group">
+                <div class="count_odd"></div>
+                <span class="now_count">1</span>
+                <div class="count_add"></div>
+            </div>
+        </div>
+    </div>
+</div>

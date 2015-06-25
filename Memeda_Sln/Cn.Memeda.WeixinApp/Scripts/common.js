@@ -1,4 +1,183 @@
 // JavaScript Document
+//登录界面的错误信息
+var loginErrorEle = $('#login-error-message');
+/*登录和注册*/
+$(document).ready(function (e) {
+    var phoneEle = $('#login-phone-number');
+    var smscode = '';
+    //send valid code
+    $('#btn-login-valid-code').click(function () {
+        loginErrorEle.html('');
+        smscode = '';
+        var phoneNumber = phoneEle.val().trim();
+        if (ValidPhone(phoneNumber)) {
+            //发送验证码
+            $.ajax({
+                type: "post",
+                url: "http://120.24.228.51:8080/20150623/weixin/register/sendSms.jhtml",
+                data: { phone: phoneNumber },
+                dataType: "json",
+                beforeSend: function () { },
+                success: function (data) {
+                    if (data.type == 'success') {
+                        smscode = data.content;
+                        seconds = 60;
+                        $('#btn-login-valid-code').hide();
+                        $('#login-count-down').show();
+                        TimerCountDown();
+                    }
+                    else { loginErrorEle.html(data.content); }
+                },
+                error: function () { },
+                complete: function () { }
+            });
+        }
+
+    });
+    //Login or register
+    $('#btn-login').click(function () {
+        var currentSmsCode = $('#login-valid-code').val().trim();
+        var regCode = /^(\d{4})$/;
+        if (smscode == undefined || smscode == '') {
+            loginErrorEle.html('请输入验证码！');
+            return;
+        }//!regCode.test(smsCode) &&
+        if (currentSmsCode != smscode) {
+            loginErrorEle.html('验证码不正确！');
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: " http://120.24.228.51:8080/20150623/weixin/register/validationSms.jhtml",
+            data: { code: smscode, phone: phoneEle.val() },
+            dataType: "json",
+            beforeSend: function () { },
+            success: function (data) {
+                if (data.type == 'success') {
+                    location.href = "/home/index";
+                }
+                else { loginErrorEle.html(data.content); }
+            },
+            error: function () { },
+            complete: function () { }
+        });
+    });
+
+    LoadShopInfomation(1);
+    LoadShopGoodsList(1);
+});
+//验证手机号码
+function ValidPhone(phoneNumber) {
+    if (phoneNumber == undefined || phoneNumber == '') {
+        loginErrorEle.html('请输入手机号码！');
+        return false;
+    }
+    var myreg = /^(((1[0-9]{2}))+\d{8})$/;
+    if (phoneNumber.length != 11 || !myreg.test(phoneNumber)) {
+        loginErrorEle.html('请输入有效的手机号码！');
+        return false;
+    }
+    return true;
+}
+var seconds = 0;
+//倒计时
+function TimerCountDown() {
+    if (seconds != 0) {
+        $('#login-count-down>span').html(seconds);
+        setTimeout("TimerCountDown()", 1000);
+    }
+    else {
+        $('#btn-login-valid-code').show();
+        $('#login-count-down').hide();
+
+    }
+    seconds--;
+}
+//加载店铺信息
+function LoadShopInfomation(merchantsId) {
+    $.ajax({
+        type: "POST",
+        url: " http://120.24.228.51:8080/20150623/weixin/merchants/getMerchantsById.jhtml",
+        data: { merchantsId: merchantsId },
+        dataType: "json",
+        beforeSend: function () { },
+        success: function (data) {
+            if (data.type == 'success') {
+                var userid = data.id;
+                var gpsX = data.gpsx;
+                var gpsY = data.gpsY;
+                $('#shop-shopkeeper').html(data.name);
+                $('#shop-address').html(data.address);
+                $('#shop-shopkeeper-image').html(data.image);
+            }
+            else { loginErrorEle.html(data.content); }
+        },
+        error: function () { },
+        complete: function () { }
+    });
+}
+//加载店铺商品
+function LoadShopGoodsList(merchantsId) {
+    $.ajax({
+        type: "POST",
+        url: " http://120.24.228.51:8080/20150623/weixin/product/list/81.jhtml",
+        data: { merchantsId: merchantsId },
+        dataType: "json",
+        beforeSend: function () { },
+        success: function (data) {
+            if (data.type == 'success') {
+                var productList='';
+                $.each(data.content, function (i, item) {
+                    productList += '<li>';
+                    productList += '<a href="#">';
+                    productList += '<img src="'+item.thumbnail+'" class="fruit_img" url="'+data.image+'">';
+                    productList += '<p><span class="fr"><i class="weight">' + item.weight + '</i>/' + item.unit + '</span><i>' + item.name + '</i></p>';
+                    productList += '<div class="product_price"><img src="/Content/images/car_07.jpg" /><i>￥' + data.price + '</i><span>￥' + data.price + '</span></div>';
+                    productList += '</a>';
+                    productList += '</li>';
+                    if (i == data.content.length) {
+                        //加载元素
+                        var strShopGoodsListEle = $('#shop-goods-list').innerHTML.replace('<div class="clear"></div>', '');
+                        strShopGoodsListEle += productList;
+                        strShopGoodsListEle += '<div class="clear"></div>';
+                        $('#shop-goods-list').html(strShopGoodsListEle);
+
+                        //商品信息弹出层
+                        $('#shop-goods-list>li>a').click(function () {
+
+                            //改变图片
+                            var urls = $(this).children(".fruit_img").attr("url");
+                            var href2 = '<img  src="' + urls + '" />';
+                            $(".product_picture").html(href2);
+                            /*改变店铺名*/
+                            $(".shop_name span").text($("#shop-shopkeeper").text());
+                            /*商品名称与价格*/
+                            var product_names = $(this).children("p").children("i").text();
+                            $(".product_name i").text(product_names);
+                            var product_pric = $(this).children(".product_price").children("i").text();
+                            $(".product_name span").text(product_pric);
+                            /*商品规格*/
+                            $(".weight span").text($(this).children("p").children("span").children(".weight").text());
+
+                            $(".fixed").show();
+                            $(".product_detail").show();
+                        });
+
+                        $(".close_detail").click(function () {
+                            $(".fixed").hide();
+                            $(".product_detail").hide();
+
+                        })
+                    }
+                });
+            }
+            else { loginErrorEle.html(data.content); }
+        },
+        error: function () { },
+        complete: function () { }
+    });
+}
+
 /*超市*/
 $(document).ready(function (e) {
     $(".product_menu li a").click(function () {
@@ -21,31 +200,6 @@ $(function () {
     }
 
 })
-/*首页注册框焦点事件*/
-$(document).ready(function (e) {
-    var username = $("#number");
-    username.focus(function () {
-        if ($(this).val() == "请输入您手机号码") {
-            $(this).val("");
-        }
-    }).blur(function () {
-        if ($(this).val() == "") {
-            $(this).val("请输入您手机号码");
-        }
-    });
-});
-$(document).ready(function (e) {
-    var password = $("#code");
-    password.focus(function () {
-        if ($(this).val() == "请输入验证码") {
-            $(this).val("");
-        }
-    }).blur(function () {
-        if ($(this).val() == "") {
-            $(this).val("请输入验证码");
-        }
-    });
-});
 
 $(document).ready(function (e) {
     var password = $("#block_input");
@@ -89,35 +243,11 @@ $(function () {
 
     var product_alert = parseInt($(".product_detail").height());
     var margin_top = product_alert / 2 + 20;
-    $(".product_detail").css({ "top": "50%", "margin-top": -margin_top })
+    $(".product_detail").css({ "top": "20%", "margin-top": -margin_top })
 
 })
 $(function () {
 
-    //商品信息弹出层
-    $(".producter_con_shop li a").click(function () {
-        //改变图片
-        var urls = $(this).children(".fruit_img").attr("src");
-        var href2 = '<img  src="' + urls + '" />';
-        $(".product_picture").html(href2);
-        /*改变店铺名*/
-        $(".shop_name span").text($(".store_name").text());
-        /*商品名称与价格*/
-        var product_names = $(this).children("p").children("i").text();
-        $(".product_name i").text(product_names);
-        var product_pric = $(this).children(".product_price").children("i").text();
-        $(".product_name span").text(product_pric);
-        /*商品规格*/
-        $(".weight span").text($(this).children("p").children("span").children(".weight").text());
-
-        $(".fixed").show();
-        $(".product_detail").show();
-    })
-    $(".close_detail").click(function () {
-        $(".fixed").hide();
-        $(".product_detail").hide();
-
-    })
     //购物车 与 商品数量
     $(".button_add_car").click(function () {
         $(this).css("z-index", "1");

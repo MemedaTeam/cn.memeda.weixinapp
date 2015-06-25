@@ -8,3 +8,5 @@
 /Memeda_Sln/Model.Common/obj
 /Memeda_Sln/Cn.Memeda.WeixinApp/obj/
 /Memeda_Sln/Cn.Memeda.WeixinApp/bin
+/Memeda_Sln/*.suo
+/Memeda_Sln/Cn.Memeda.WeixinApp/obj
