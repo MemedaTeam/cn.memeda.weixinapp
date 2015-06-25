@@ -17,7 +17,8 @@
                 url: that.indexcommuntityUrl,
                 data: null,
                 success: function (data) {
-                    $("#indexcommuntity a").attr("href", data.id).find("span").val(data.name);
+                    console.log(data);
+                    //$("#indexcommuntity a").attr("href", data.id).find("span").val(data.name);
                 }
             });
         },

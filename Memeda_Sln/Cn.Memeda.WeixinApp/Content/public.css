@@ -218,10 +218,21 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 @media screen and (max-width:360px) {
     .shoper_mess { padding-left: 3.3333333333333%; width: 53%; }
     body { font-size: 12px; }
+    .saled_order { font-size: 1em; }
+    .producter_con_shop li .product_price { font-size: 1em; }
+    .add_car { font-size: 1em; }
+    .protocol { font-size: 1em; }
+    .shop_intro { font-size: 1em; }
+    .shoper_mess span { font-size: 1em; }
+    .producter_con_shop li p span { font-size: 1em; }
+    .producter_con_shop li a .product_price img { width: 14%; }
 }
 
 @media screen and (max-width:480px) {
     .shoper_mess { padding-left: 3.3333333333333%; width: 53%; }
+    .order_tab a p { line-height: 2.25em; border-bottom: 3px solid #ffffff; }
+    .order_tab a.order_click p { border-bottom: 3px solid #ed6a02; color: #ed6a02; }
+    .order_tab a span { display: block; width: 15px; height: 19px; margin: 8px auto; }
 }
 
 @media screen and (min-width:480px) {
@@ -238,6 +249,10 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 }
 
 /*********************** tom 修改 start ********************/
+.order_list_ul, .store_mess p, .order_con p, .arrive_time p, .submit_order_con p, .order_tab a p { margin-bottom: 0; }
+.submit_order_con p, .submit_order_con input { display: inline-block; }
+.submit_order_con input { line-height: 32px; height: 34px; }
+.order_tab a:hover { text-decoration: none; }
 
 
 /*********************** tom 修改 end ********************/
