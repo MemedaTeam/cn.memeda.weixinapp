@@ -1,6 +1,5 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    headers['Access-Control-Allow-Origin'] = "*"
 }
 
 
@@ -28,7 +27,7 @@
         <ul class="producter_con_shop" id="shop-goods-list">
             
         </ul>
-        <div class="car_shop"><img src="/Content/images/s_27.png"><span>1</span></div>
+        <div class="car_shop"><img src="/Content/images/s_27.png"><span>0</span></div>
     </div>
 </div>
 <!-----------内容结束--------------->
@@ -43,10 +42,10 @@
         <div class="weight">规格：<span>135g</span></div>
         <div class="activity">活动：<span>暂无</span></div>
         <div class="add_car">
-            <a class="button_add_car" href="#">加入购物车</a>
+            <a href="javascript:void(0);" class="button_add_car" id="btn-add-to-car" >加入购物车</a>
             <div class="count_group">
                 <div class="count_odd"></div>
-                <span class="now_count">1</span>
+                <span class="now_count" id="shop-car-goods-count">0</span>
                 <div class="count_add"></div>
             </div>
         </div>

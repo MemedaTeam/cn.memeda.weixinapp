@@ -66,7 +66,10 @@ $(document).ready(function (e) {
             complete: function () { }
         });
     });
-
+    //添加商品到购物车
+    $('#btn-add-to-car').click(function () {
+        $('#shop-car-goods-count').html(0);
+    });
     LoadShopInfomation(1);
     LoadShopGoodsList(1);
 });
@@ -100,15 +103,14 @@ function TimerCountDown() {
 //加载店铺信息
 function LoadShopInfomation(merchantsId) {
     $.ajax({
-        type: "POST",
+        type: "Get",
         url: " http://120.24.228.51:8080/20150623/weixin/merchants/getMerchantsById.jhtml",
         data: { merchantsId: merchantsId },
         dataType: "json",
-        jsonp: "jsoncallback",
         crossDomain: true,
         beforeSend: function () { },
         success: function (data) {
-            if (data.type == 'success') {
+            if (data !=null) {
                 var userid = data.id;
                 var gpsX = data.gpsx;
                 var gpsY = data.gpsY;
@@ -125,15 +127,14 @@ function LoadShopInfomation(merchantsId) {
 //加载店铺商品
 function LoadShopGoodsList(merchantsId) {
     $.ajax({
-        type: "POST",
+        type: "Get",
         url: " http://120.24.228.51:8080/20150623/weixin/product/list/81.jhtml",
         data: { merchantsId: merchantsId },
         dataType: "json",
-        jsonp: "jsoncallback",
         crossDomain: true,
         beforeSend: function () { },
         success: function (data) {
-            if (data.type == 'success') {
+            if (data!=null && data.content!=null) {
                 var productList='';
                 $.each(data.content, function (i, item) {
                     productList += '<li>';
@@ -170,7 +171,7 @@ function LoadShopGoodsList(merchantsId) {
                             $(".fixed").show();
                             $(".product_detail").show();
                         });
-
+                        //关闭弹出层
                         $(".close_detail").click(function () {
                             $(".fixed").hide();
                             $(".product_detail").hide();
