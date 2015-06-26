@@ -14,5 +14,12 @@ namespace Cn.Memeda.WeixinApp.Controllers
         {
             return View();
         }
+        //
+        // GET: /Shop/
+        public ActionResult Car()
+        {
+            ViewBag.subTitle = "购物车";
+            return View();
+        }
 	}
 }

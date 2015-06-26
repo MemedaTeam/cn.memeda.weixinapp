@@ -11,20 +11,22 @@ $(document).ready(function (e) {
         smscode = '';
         var phoneNumber = phoneEle.val().trim();
         if (ValidPhone(phoneNumber)) {
+            seconds = 60;
+            $('#btn-login-valid-code').hide();
+            $('#login-count-down').show();
+            TimerCountDown();
             //发送验证码
             $.ajax({
                 type: "post",
                 url: "http://120.24.228.51:8080/20150623/weixin/register/sendSms.jhtml",
                 data: { phone: phoneNumber },
                 dataType: "json",
+                jsonp: "jsoncallback",
+                crossDomain:true,
                 beforeSend: function () { },
                 success: function (data) {
                     if (data.type == 'success') {
                         smscode = data.content;
-                        seconds = 60;
-                        $('#btn-login-valid-code').hide();
-                        $('#login-count-down').show();
-                        TimerCountDown();
                     }
                     else { loginErrorEle.html(data.content); }
                 },
@@ -51,6 +53,8 @@ $(document).ready(function (e) {
             url: " http://120.24.228.51:8080/20150623/weixin/register/validationSms.jhtml",
             data: { code: smscode, phone: phoneEle.val() },
             dataType: "json",
+            jsonp: "jsoncallback",
+            crossDomain: true,
             beforeSend: function () { },
             success: function (data) {
                 if (data.type == 'success') {
@@ -100,6 +104,8 @@ function LoadShopInfomation(merchantsId) {
         url: " http://120.24.228.51:8080/20150623/weixin/merchants/getMerchantsById.jhtml",
         data: { merchantsId: merchantsId },
         dataType: "json",
+        jsonp: "jsoncallback",
+        crossDomain: true,
         beforeSend: function () { },
         success: function (data) {
             if (data.type == 'success') {
@@ -123,6 +129,8 @@ function LoadShopGoodsList(merchantsId) {
         url: " http://120.24.228.51:8080/20150623/weixin/product/list/81.jhtml",
         data: { merchantsId: merchantsId },
         dataType: "json",
+        jsonp: "jsoncallback",
+        crossDomain: true,
         beforeSend: function () { },
         success: function (data) {
             if (data.type == 'success') {

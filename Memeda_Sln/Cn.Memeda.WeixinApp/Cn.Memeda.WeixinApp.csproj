@@ -262,6 +262,7 @@
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Info.cshtml" />
+    <Content Include="Views\Shop\Car.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
