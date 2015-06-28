@@ -13,8 +13,9 @@ namespace Cn.Memeda.WeixinApp.Controllers
             return View();
         }
 
-        public ActionResult Location()
+        public ActionResult Location(int id)
         {
+            ViewBag.lid = id;
             return View();
         }
 

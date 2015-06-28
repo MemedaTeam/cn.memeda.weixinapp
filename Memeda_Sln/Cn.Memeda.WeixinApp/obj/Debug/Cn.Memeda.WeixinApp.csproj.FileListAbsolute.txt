@@ -162,3 +162,4 @@ D:\code\cn.memeda.weixinapp\Memeda_Sln\Cn.Memeda.WeixinApp\bin\Microsoft.Owin.Se
 D:\code\cn.memeda.weixinapp\Memeda_Sln\Cn.Memeda.WeixinApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\code\cn.memeda.weixinapp\Memeda_Sln\Cn.Memeda.WeixinApp\obj\Debug\Cn.Memeda.WeixinApp.dll
 D:\code\cn.memeda.weixinapp\Memeda_Sln\Cn.Memeda.WeixinApp\obj\Debug\Cn.Memeda.WeixinApp.pdb
+D:\code\cn.memeda.weixinapp\Memeda_Sln\Cn.Memeda.WeixinApp\obj\Debug\Cn.Memeda.WeixinApp.csprojResolveAssemblyReference.cache

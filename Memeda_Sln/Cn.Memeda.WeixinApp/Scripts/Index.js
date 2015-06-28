@@ -1,60 +1,80 @@
 ﻿(function () {
-    var IndexPage = function (option) {
+    var method = "get";
+    var indexPage = function (option) {
         this.paras = option || {};
         this.indexcommuntityUrl = option.hasOwnProperty("indexcommuntityUrl") && option.indexcommuntityUrl || "";
         this.communtityListUrl = option.hasOwnProperty("communtityListUrl") && option.communtityListUrl || "";
+        this.merchantsList = option.hasOwnProperty("merchantsList") && option.merchantsList || "";
+        this.productlist = option.hasOwnProperty("productlist") && option.productlist || "";
     };
-    IndexPage.prototype = {
-        that: this,
+    indexPage.prototype = {
         getIndexCommunity: function () {
             var that = this;
             $.ajax({
-                type: "GET",
-                async: false,
-                dataType: "jsonp",
-                crossDomain: true,
-                jsonp: "jsoncallback",
+                method: method,
                 url: that.indexcommuntityUrl,
+                data: null,
+                success: function (data) {
+
+                    $("#indexcommuntity a").attr("href", locationUrl + data.id).find("span").val(data.name);
+                    that.getmerchantList(data.id);
+                }
+            });
+        },
+        getmerchantList: function (id) {
+            var that = this;
+            $.ajax({
+                method: method,
+                url: that.merchantsList + id,
+                data: null,
+                success: function (data) {
+                    var html = template("shopitem", data);
+                    $("#shoplist").html(html);
+                }
+            });
+        },
+        getCommunitityList: function () {
+            var that = this;
+            $.ajax({
+                method: method,
+                url: that.communtityListUrl,
+                data: null,
+                success: function (data) {
+                    var list = { "content": data };
+                    var html = template("locationitem", list);
+                    $("#locationlist").html(html);
+                }
+            });
+        },
+        getProductList: function (cataid, parentEle) {
+            var that = this;
+            $.ajax({
+                method: method,
+                url: that.productlist.replace("{cata}", cataid),
                 data: null,
                 success: function (data) {
                     console.log(data);
-                    //$("#indexcommuntity a").attr("href", data.id).find("span").val(data.name);
+                    var html = template("productitem", data);
+                    parentEle.find("ul").html(html);
                 }
             });
         },
-        getCommunitityList:function() {
+        ReisterEvent: function () {
             var that = this;
-            $.ajax({
-                type: "GET",
-                async: false,
-                dataType: "jsonp",
-                crossDomain: true,
-                jsonp: "jsoncallback",
-                url: that.indexcommuntityUrl,
-                data: null,
-                success: function (data) {
-                    $("#indexcommuntity a").attr("href", data.id).find("span").val(data.name);
-                }
+            $("#fruiticon").click(function () {
+                that.getProductList(82, $("#fruitlist"));
             });
-        },
-        getmerchantList:function() {
-            var that = this;
-            $.ajax({
-                type: "GET",
-                async: false,
-                dataType: "jsonp",
-                crossDomain: true,
-                jsonp: "jsoncallback",
-                url: that.indexcommuntityUrl,
-                data: null,
-                success: function (data) {
-                    $("#indexcommuntity a").attr("href", data.id).find("span").val(data.name);
-                }
+            $("#snacklist").click(function () {
+                that.getProductList(83, $("#snacklist"));
+            });
+            $("#marketlist").click(function () {
+                that.getProductList(84, $("#marketlist"));
             });
         },
         init: function () {
+            this.ReisterEvent();
             this.getIndexCommunity();
         }
     };
-    window.IndexPage = IndexPage;
+    window.IndexPage = indexPage;
 })();

@@ -13,7 +13,7 @@
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="bin/Cn.Memeda.WeixinApp.dll">
-      <publishTime>06/25/2015 18:57:04</publishTime>
+      <publishTime>06/25/2015 20:32:44</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/23/2015 17:47:22</publishTime>
@@ -211,7 +211,7 @@
       <publishTime>06/24/2015 21:20:12</publishTime>
     </File>
     <File Include="Content/public.css">
-      <publishTime>06/24/2015 21:59:58</publishTime>
+      <publishTime>06/25/2015 20:22:52</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>06/23/2015 17:47:22</publishTime>
@@ -244,7 +244,7 @@
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="Scripts/common.js">
-      <publishTime>06/23/2015 17:47:22</publishTime>
+      <publishTime>06/25/2015 20:21:09</publishTime>
     </File>
     <File Include="Scripts/Index.js">
       <publishTime>06/24/2015 22:12:12</publishTime>
@@ -323,6 +323,12 @@
     </File>
     <File Include="Views/Home/Location.cshtml">
       <publishTime>06/24/2015 21:20:12</publishTime>
+    </File>
+    <File Include="Views/Order/Index.cshtml">
+      <publishTime>06/25/2015 20:19:18</publishTime>
+    </File>
+    <File Include="Views/Order/Info.cshtml">
+      <publishTime>06/25/2015 20:18:57</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/23/2015 17:47:22</publishTime>
