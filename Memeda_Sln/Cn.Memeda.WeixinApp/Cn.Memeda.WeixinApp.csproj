@@ -215,7 +215,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\common.css" />
-    <Content Include="Scripts\account\Login.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\memeda.pubxml" />
@@ -229,9 +228,12 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\account\login.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\shop\car.js" />
+    <Content Include="Scripts\shop\shop.js" />
     <Content Include="Scripts\template.js" />
     <Content Include="Scripts\windowsheight.js" />
     <Content Include="Scripts\_references.js" />
@@ -264,6 +266,7 @@
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Info.cshtml" />
+    <Content Include="Views\Shop\Car.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

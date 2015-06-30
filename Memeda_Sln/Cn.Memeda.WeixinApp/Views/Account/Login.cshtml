@@ -10,17 +10,20 @@
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <h4>一键登录</h4><span class="red error-message"></span>
-                    <div class="clearfix"></div>
-                    <hr />
+                    <span class="red error-message" id="login-error-message"></span>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_login">
                         <tr class="table_border">
                             <td width="18.16666666666667%"><span>+86</span></td>
-                            <td><input type="text" class="login_text" id="phone-number" placeholder="请输入您手机号码" value="" /></td>
+                            <td><input type="text" class="login_text" id="login-phone-number" placeholder="请输入您手机号码" value="" /></td>
                         </tr>
                         <tr class="table_border">
                             <td><span>验证码</span></td>
-                            <td><div class="identi_code"><input type="text" placeholder="请输入验证码" class="login_text" id="sms-valid-code" value="" /><a id="btn-sms-valid-code">发送验证码</a></div></td>
+                            <td><div class="identi_code">
+                                    <input type="text" placeholder="请输入验证码" class="login_text" id="login-valid-code" value="" />
+                                    <a href="javascript:void(0);" id="btn-login-valid-code">发送验证码</a>
+                                    <a href="javascript:void(0);" id="login-count-down"><span></span>秒后重新发送</a>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td align="right" colspan="2"><p class="protocol">注册账号就视为阅读过<a href="#">《么么达用户协议》</a></p></td>

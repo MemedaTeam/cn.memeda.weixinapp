@@ -1,3 +1,12 @@
-/*/*/obj
-/*/*/bin
-/*/*/*/Debug
+/Memeda_Sln/Business.Common/obj
+/Memeda_Sln/Business.Common/bin
+/Memeda_Sln/OnlineWeb.Common/bin
+/Memeda_Sln/OnlineWeb.Common/obj
+/Memeda_Sln/Framwork/bin
+/Memeda_Sln/Framwork/obj
+/Memeda_Sln/Model.Common/bin
+/Memeda_Sln/Model.Common/obj
+/Memeda_Sln/Cn.Memeda.WeixinApp/obj/
+/Memeda_Sln/Cn.Memeda.WeixinApp/bin
+/Memeda_Sln/*.suo
+/Memeda_Sln/Cn.Memeda.WeixinApp/obj
