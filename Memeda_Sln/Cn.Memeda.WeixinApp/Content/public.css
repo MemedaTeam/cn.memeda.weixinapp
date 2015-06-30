@@ -143,6 +143,7 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
     .order_con font { color: #ed6a02; }
     .order_con span { color: #999; }
 .count_order { color: #ed6a02; }
+.order_block { padding-left: 0 !important; padding-right: 0 !important; }
 .arrive_time { position: relative; font-size: 1.166666666666667em; height: 2.142857142857143; line-height: 2.142857142857143em; width: 93.75%; margin: 0 auto; }
     .arrive_time p { padding-left: 7%; }
     .arrive_time img { height: 1em; position: absolute; left: 0; top: 0.5714285714285714em; }

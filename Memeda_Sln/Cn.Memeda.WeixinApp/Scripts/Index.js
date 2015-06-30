@@ -6,6 +6,7 @@
         this.communtityListUrl = option.hasOwnProperty("communtityListUrl") && option.communtityListUrl || "";
         this.merchantsList = option.hasOwnProperty("merchantsList") && option.merchantsList || "";
         this.productlist = option.hasOwnProperty("productlist") && option.productlist || "";
+        this.orderList = option.hasOwnProperty("orderList") && option.orderList || "";
     };
     indexPage.prototype = {
         getIndexCommunity: function () {
@@ -59,17 +60,37 @@
                 }
             });
         },
+        getAllOrderList: function (paymentStatus, shippingStatus) {
+            var that = this;
+            $.ajax({
+                method: method,
+                url: that.orderList,
+                data: null,
+                success: function (data) {
+                    console.log(data);
+                    var html = template("productitem", data);
+                    parentEle.find("ul").html(html);
+                }
+            });
+        },
+
         ReisterEvent: function () {
             var that = this;
-            $("#fruiticon").click(function () {
-                that.getProductList(82, $("#fruitlist"));
-            });
-            $("#snacklist").click(function () {
-                that.getProductList(83, $("#snacklist"));
-            });
-            $("#marketlist").click(function () {
-                that.getProductList(84, $("#marketlist"));
-            });
+            if ($("#fruiticon").length > 0) {
+                $("#fruiticon").click(function () {
+                    that.getProductList(82, $("#fruitlist"));
+                });
+            }
+            if ($("#snacklist").length > 0) {
+                $("#snacklist").click(function () {
+                    that.getProductList(83, $("#snacklist"));
+                });
+            }
+            if ($("#marketlist").length>0) {
+                $("#marketlist").click(function () {
+                    that.getProductList(84, $("#marketlist"));
+                });
+            }
         },
         init: function () {
             this.ReisterEvent();
