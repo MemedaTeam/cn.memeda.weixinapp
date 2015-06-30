@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Location";
     ViewBag.subTitle = "选择地址";
-    
+
 }
 
 <!-----------内容开始--------------->
@@ -12,7 +12,7 @@
         </form>
     </div>
     <div class="container location">
-        <ul class="block_list">
+        <ul class="block_list" id="locationlist">
             <li>
                 <p><img src="/Content/images/block_11.png">长原小区</p>
                 <span>上海市长宁区江苏路502弄40支弄1-21号</span>
@@ -25,3 +25,21 @@
     </div>
 </div>
 <!-----------内容结束--------------->
+@section scripts{
+    <script src="~/Scripts/template.js"></script>
+    <script type="text/html" id="locationitem">
+        {{each content as value i}}
+        <li data-id="{{value.id}}">
+            <p><img src="/Content/images/block_11.png">{{value.name}}</p>
+            <span>{{value.fullName}}</span>
+        </li>
+        {{/each}}
+    </script>
+    <script src="~/Scripts/Index.js"></script>
+    <script>
+        var index = new IndexPage({
+            communtityListUrl: "http://120.24.228.51:8080/20150623/weixin/community/list.jhtml"
+        });
+        index.getCommunitityList();
+    </script>
+}
