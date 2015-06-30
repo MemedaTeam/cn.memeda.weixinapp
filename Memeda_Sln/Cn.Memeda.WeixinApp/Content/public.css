@@ -270,6 +270,8 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
         #loginForm #login-count-down:hover, #loginForm #login-count-down:active {
             text-decoration:none;
         }
+#car-house_number {background:none;
+}
 
 
 /*********************** xueqiang 修改 end ********************/

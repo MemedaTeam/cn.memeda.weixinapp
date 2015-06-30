@@ -228,9 +228,12 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\account\login.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\shop\car.js" />
+    <Content Include="Scripts\shop\shop.js" />
     <Content Include="Scripts\windowsheight.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
