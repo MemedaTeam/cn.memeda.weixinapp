@@ -1,4 +1,4 @@
-﻿@charset "utf-8";
+@charset "utf-8";
 /* CSS Document */
 * { margin: 0; padding: 0; }
 
@@ -26,7 +26,7 @@ body { font-size: 14px; }
 i { font-style: normal; }
 /*头部标题栏*/
 header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; font-size: 1em; height: 3.666666666666667em; line-height: 3.666666666666667em; text-align: center; color: #fff; border-bottom: 1px solid #e01b01; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; z-index: 9999; }
-.container { position: relative; width: 93.75%; margin: 0 auto; }
+.container { position: relative; width: 100%; margin: 0 auto; }
 .pre_icon { height: 1.708333333333333em; position: absolute; left: 0; top: 0.979166666666667em; display: block; }
     .pre_icon img { height: 100%; }
 .head_mid { width: 100%; text-align: center; }
@@ -75,7 +75,7 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
     .producter_con_shop li { width: 33.33333333333%; border-bottom: 1px solid #eeeeee; float: left; padding-top: 15px; }
         .producter_con_shop li a { display: block; width: 100%; padding: 0 4%; margin: 0 auto; border-left: 1px solid #ffffff; border-right: 1px solid #eeeeee; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; margin-bottom: 15px; }
             .producter_con_shop li a img { width: 100%; border: 1px solid #eeeeee; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
-        .producter_con_shop li p { font-size: 1.083333333333333em; color: #333333; line-height: 1.083333333333333em; margin: 0.6153846153846154em 0 0.3461538461538462em 0; }
+        .producter_con_shop li p { /* font-size: 1.083333333333333em; */ color: #333333; /* line-height: 1.083333333333333em; */ /* margin: 0.6153846153846154em 0 0.3461538461538462em 0; */ }
             .producter_con_shop li p span { font-size: 0.8461538461538462em; color: #999999; }
         .producter_con_shop li .product_price { font-size: 0.9166666666666667em; line-height: 1.454545454545455em; height: 1.454545454545455em; color: #ed6a02; }
             .producter_con_shop li .product_price span { color: #999999; padding-left: 5px; text-decoration: line-through; }
@@ -271,8 +271,28 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
         #loginForm #login-count-down:hover, #loginForm #login-count-down:active {
             text-decoration:none;
         }
-#car-house_number {background:none;
-}
+        .producter_con_shop li p {
+            font-size:.8em;
+            margin-top:5px;
+            }
+ .shop-main{
+     width:100%;
+ }
+ .shop-fixed{
+width:100%;
+height:100%;
 
+ }
+.shop-add-car {
+    top:1em;
+}
+.shop-button-add-car{width:100%;margin-top:5px;}
+.producter_con_shop li>a>img{
+    height:178px;
+}
+.producter_con_shop li>a>p{
+    height:40px;
+    overflow-y:hidden;
+}
 
 /*********************** xueqiang 修改 end ********************/

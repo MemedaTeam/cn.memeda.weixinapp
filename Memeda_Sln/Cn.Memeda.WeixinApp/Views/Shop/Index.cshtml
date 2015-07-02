@@ -1,9 +1,10 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section css{
+    }
 
-
-<div class="content">
+<div class="content shop-main">
     <div class="stores">
         <div class="container">
             <div class="producter_row nobg">
@@ -32,7 +33,7 @@
 </div>
 <!-----------内容结束--------------->
 <!--商品详细信息弹出层-->
-<div class="fixed" style="display:none;"></div>
+<div class="fixed shop-fixed" style="display:none;"></div>
 <div class="product_detail" style="display:none;">
     <a href="javascript:void(0)" class="close_detail"></a>
     <div class="product_picture"><img class="" src="/Content/images/f2.jpg"></div>
@@ -41,13 +42,13 @@
         <div class="shop_name">商家：<span>光明便利店</span></div>
         <div class="weight">规格：<span>135g</span></div>
         <div class="activity">活动：<span>暂无</span></div>
-        <div class="add_car">
-            <a href="javascript:void(0);" class="button_add_car" id="btn-add-to-car" >加入购物车</a>
+        <div class="add_car shop-add-car">
             <div class="count_group">
                 <div class="count_odd"></div>
                 <span class="now_count" id="shop-car-goods-count">0</span>
                 <div class="count_add"></div>
             </div>
+            <a href="javascript:void(0);" value="" class="button_add_car shop-button-add-car" id="btn-add-to-car" >加入购物车</a>
         </div>
     </div>
 </div>
