@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 * { margin: 0; padding: 0; }
 
@@ -27,7 +27,7 @@ i { font-style: normal; }
 /*头部标题栏*/
 header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; font-size: 1em; height: 3.666666666666667em; line-height: 3.666666666666667em; text-align: center; color: #fff; border-bottom: 1px solid #e01b01; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; z-index: 9999; }
 .container { position: relative; width: 100%; margin: 0 auto; }
-.pre_icon { height: 1.708333333333333em; position: absolute; left: 0; top: 0.979166666666667em; display: block; }
+.pre_icon { height: 1.708333333333333em; position: absolute; left: 12px; top: 0.979166666666667em; display: block; }
     .pre_icon img { height: 100%; }
 .head_mid { width: 100%; text-align: center; }
     .head_mid img { height: 3em; padding-top: 0.7708333333333335em; margin: 0 auto; }
@@ -139,7 +139,7 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
     .order_con font { color: #ed6a02; }
     .order_con span { color: #999; }
 .count_order { color: #ed6a02; }
-.order_block { padding-left: 0 !important; padding-right: 0 !important; }
+.order_block { padding-left: 7px !important; padding-right: 7px !important; }
 .arrive_time { position: relative; font-size: 1.166666666666667em; height: 2.142857142857143; line-height: 2.142857142857143em; width: 93.75%; margin: 0 auto; }
     .arrive_time p { padding-left: 7%; }
     .arrive_time img { height: 1em; position: absolute; left: 0; top: 0.5714285714285714em; }
@@ -208,7 +208,7 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 .order_number .pay_block { position: absolute; right: 0; top: 0; }
     .order_number .pay_block span { line-height: 2.166666666666667em; font-size: 1em; color: #ed6a02; }
     .order_number .pay_block a { display: inline-block; line-height: 2.083333333333333em; padding: 0 1em; color: #fff; background: #01a705; margin-top: 0.9166666666666667em; border-radius: 3px; }
-.order_number p { font-size: 1.166666666666667em; color: #ed6a02; line-height: 1.607142857142857em; }
+.order_number p { font-size: 1.166666666666667em; color: #ed6a02; line-height: 1.607142857142857em; margin-bottom: 0; }
 .order_number span { display: inline-block; font-size: 1em; color: #666; line-height: 1.583333333333333em; }
 .dotted_line { width: 100%; font-size: 1em; height: 0px; border-top: 1px dashed #ed6a02; overflow: hidden; }
 
@@ -250,49 +250,22 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 .submit_order_con p, .submit_order_con input { display: inline-block; }
 .submit_order_con input { line-height: 32px; height: 34px; }
 .order_tab a:hover { text-decoration: none; }
-
+.location { padding-left: 15px !important; padding-right: 15px !important; }
 
 /*********************** tom 修改 end ********************/
 
 /*********************** xueqiang 修改 start ********************/
 #loginForm { margin: 55px 0 0 0; }
     #loginForm .error-message { color: #ff0000; font-size: .8em; }
-.login_text {
-    width: 70%;
-}
-    #loginForm #login-count-down {
-        font-size:.5em;
-        background-color:#999999;
-        padding:5px 10px;   
-        top:.8em;       
-        cursor:text;     
-        display:none;
-    }
-        #loginForm #login-count-down:hover, #loginForm #login-count-down:active {
-            text-decoration:none;
-        }
-        .producter_con_shop li p {
-            font-size:.8em;
-            margin-top:5px;
-            }
- .shop-main{
-     width:100%;
- }
- .shop-fixed{
-width:100%;
-height:100%;
-
- }
-.shop-add-car {
-    top:1em;
-}
-.shop-button-add-car{width:100%;margin-top:5px;}
-.producter_con_shop li>a>img{
-    height:178px;
-}
-.producter_con_shop li>a>p{
-    height:40px;
-    overflow-y:hidden;
-}
+.login_text { width: 70%; }
+#loginForm #login-count-down { font-size: .5em; background-color: #999999; padding: 5px 10px; top: .8em; cursor: text; display: none; }
+    #loginForm #login-count-down:hover, #loginForm #login-count-down:active { text-decoration: none; }
+.producter_con_shop li p { font-size: .8em; margin-top: 5px; }
+.shop-main { width: 100%; }
+.shop-fixed { width: 100%; height: 100%; }
+.shop-add-car { top: 1em; }
+.shop-button-add-car { width: 100%; margin-top: 5px; }
+.producter_con_shop li > a > img { height: 178px; }
+.producter_con_shop li > a > p { height: 40px; overflow-y: hidden; }
 
 /*********************** xueqiang 修改 end ********************/

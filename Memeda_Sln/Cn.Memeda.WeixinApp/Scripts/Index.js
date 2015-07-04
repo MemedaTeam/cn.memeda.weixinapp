@@ -65,6 +65,7 @@
             $.ajax({
                 method: method,
                 url: that.orderList,
+                headers: { "tokenM": "N193YW5na2U1OQ==" },
                 data: { "paymentStatus": paymentStatus, "shippingStatus": shippingStatus },
                 success: function (data) {
                     console.log(data);
