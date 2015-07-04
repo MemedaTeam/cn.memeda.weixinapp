@@ -90,10 +90,10 @@
         var locationUrl = '@Url.Action("Location", "Home")/';
     </script>
     <script type="text/html" id="shopitem">
-        {{each content as value item}}
+        {{each content as item index}}
         <li data-gpsx="{{item.gpsX}}" data-gpsy="{{item.gpsY}}">
             <div class="producter_row">
-                <a href="javascript:void(0)">
+                <a href="@Url.Action("Index","Shop")?cataid=81&merchantsid={{item.id}}">
                     <img class="fl shoper_img" src="{{item.image}}">
                     <div class="shoper_mess fl">
                         <p>{{item.name}}<i>配</i></p>
@@ -133,6 +133,6 @@
             merchantsList: "http://120.24.228.51:8080/20150623/weixin/merchants/list.jhtml?communityId=",
             productlist: "http://120.24.228.51:8080/20150623/weixin/product/list/{cata}.jhtml"
         });
-        index.init();
+        index.RegisterIndex();
     </script>
 }
