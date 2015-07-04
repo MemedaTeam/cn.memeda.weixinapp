@@ -53,9 +53,29 @@
                     <p>&copy; @DateTime.Now.Year - 么么哒</p>
                 </footer>
         </div>*@
-
+    <!--商品详细信息弹出层-->
+    <div class="fixed shop-fixed" style="display:none;"></div>
+    <div class="product_detail" style="display:none;">
+        <a href="javascript:void(0)" class="close_detail"></a>
+        <div class="product_picture"><img class="" src="/Content/images/f2.jpg"></div>
+        <p class="product_name"><span>￥7.9</span><i>光明发酵乳</i></p>
+        <div class="shop_intro">
+            <div class="shop_name">商家：<span>光明便利店</span></div>
+            <div class="weight">规格：<span>135g</span></div>
+            <div class="activity">活动：<span>暂无</span></div>
+            <div class="add_car shop-add-car">
+                <div class="count_group">
+                    <div class="count_odd"></div>
+                    <span class="now_count" id="shop-car-goods-count">0</span>
+                    <div class="count_add"></div>
+                </div>
+                <a href="javascript:void(0);" value="" class="button_add_car shop-button-add-car" id="btn-add-to-car">加入购物车</a>
+            </div>
+        </div>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/common")
     @RenderSection("scripts", required: false)
 </body>
 </html>

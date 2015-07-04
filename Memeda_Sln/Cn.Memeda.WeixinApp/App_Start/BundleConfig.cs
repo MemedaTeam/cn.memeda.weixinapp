@@ -25,6 +25,8 @@ namespace Cn.Memeda.WeixinApp
                       "~/Scripts/respond.js"));
             bundles.Add(new ScriptBundle("~/bundles/account").Include(
                      "~/Scripts/account/login.js"));
+            bundles.Add(new ScriptBundle("~/bundles/common").Include(
+                     "~/Scripts/common.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/shop").Include(
                     "~/Scripts/shop/car.js",
