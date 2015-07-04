@@ -60,15 +60,15 @@
                 }
             });
         },
-        getAllOrderList: function (paymentStatus, shippingStatus) {
+        getAllOrderList: function (parentEle,paymentStatus, shippingStatus) {
             var that = this;
             $.ajax({
                 method: method,
                 url: that.orderList,
-                data: null,
+                data: { "paymentStatus": paymentStatus, "shippingStatus": shippingStatus },
                 success: function (data) {
                     console.log(data);
-                    var html = template("productitem", data);
+                    var html = template("orderitem", data.content);
                     parentEle.find("ul").html(html);
                 }
             });
@@ -86,7 +86,7 @@
                     that.getProductList(83, $("#snacklist"));
                 });
             }
-            if ($("#marketlist").length>0) {
+            if ($("#marketlist").length > 0) {
                 $("#marketlist").click(function () {
                     that.getProductList(84, $("#marketlist"));
                 });
