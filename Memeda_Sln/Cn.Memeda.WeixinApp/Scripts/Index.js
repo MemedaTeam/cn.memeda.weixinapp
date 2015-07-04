@@ -82,6 +82,16 @@
                     that.getProductList(82, $("#fruitlist"));
                 });
             }
+            if ($("#snackicon").length > 0) {
+                $("#snackicon").click(function () {
+                    that.getProductList(83, $("#snacklist"));
+                });
+            }
+            if ($("#marketicon").length > 0) {
+                $("#marketicon").click(function () {
+                    that.getProductList(84, $("#marketlist"));
+                });
+            }
             if ($("#snacklist").length > 0) {
                 $("#snacklist").click(function () {
                     that.getProductList(83, $("#snacklist"));
