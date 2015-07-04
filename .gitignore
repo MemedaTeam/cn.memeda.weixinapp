@@ -10,3 +10,5 @@
 /Memeda_Sln/Cn.Memeda.WeixinApp/bin
 /Memeda_Sln/*.suo
 /Memeda_Sln/Cn.Memeda.WeixinApp/obj
+/*/*/obj/*
+/Memeda_Sln/Cn.Memeda.WeixinApp/obj/Debug/*.dll
