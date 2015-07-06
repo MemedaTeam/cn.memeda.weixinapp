@@ -193,12 +193,11 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 .close_trolley { right: -0.5em; top: -0.5em; }
 
 /*订单列表*/
-.order_tab { }
-    .order_tab a { display: block; width: 25%; text-align: center; font-size: 1em; float: left; }
-        .order_tab a span { display: block; width: 30px; height: 38px; margin: 15px auto; background-image: url(/content/images/order1.jpg); background-repeat: no-repeat; background-position: 0 0; background-size: cover; }
-        .order_tab a p { line-height: 2.25em; border-bottom: 5px solid #ffffff; }
-        .order_tab a.order_click p { border-bottom: 5px solid #ed6a02; color: #ed6a02; }
-        .order_tab a.order_click span { background-image: url(/content/images/order2.jpg); }
+.order_tab a { display: block; width: 33%; text-align: center; font-size: 1em; float: left; }
+    .order_tab a span { display: block; width: 30px; height: 38px; margin: 15px auto; background-image: url(/content/images/order1.jpg); background-repeat: no-repeat; background-position: 0 0; background-size: cover; }
+    .order_tab a p { line-height: 2.25em; border-bottom: 5px solid #ffffff; }
+    .order_tab a.order_click p { border-bottom: 5px solid #ed6a02; color: #ed6a02; }
+    .order_tab a.order_click span { background-image: url(/content/images/order2.jpg); }
 .order_account_bot { font-size: 1.333333333333333em; line-height: 2.875em; color: #ed6a02; text-align: right; }
     .order_account_bot .goods_mount { color: #999999; padding-right: 1em; font-size: 0.875em; }
         .order_account_bot .goods_mount i { color: #ed6a02; }
@@ -266,9 +265,6 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 .shop-add-car { top: 1em; }
 .shop-button-add-car { width: 100%; margin-top: 5px; }
 .producter_con_shop li > a > p { height: 40px; overflow-y: hidden; }
-.button_add_car {
-    padding-left: 20.31325301204819%;
-    background: #ed6a02 url(/content/images/jg_25.jpg) no-repeat 10% center;
-}
+.button_add_car { padding-left: 20.31325301204819%; background: #ed6a02 url(/content/images/jg_25.jpg) no-repeat 10% center; }
 
 /*********************** xueqiang 修改 end ********************/

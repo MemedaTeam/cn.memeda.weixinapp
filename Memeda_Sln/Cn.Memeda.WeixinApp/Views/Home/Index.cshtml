@@ -61,53 +61,29 @@
         </div>
     </div>
 </div>
-<!--商品详细信息弹出层-->
-<div class="fixed" style="display:none;"></div>
-<div class="product_detail" style="display:none;">
-    <a href="javascript:void(0)" class="close_detail"></a>
-    <div class="product_picture"><img class="" src="/Content/images/f2.jpg"></div>
-    <p class="product_name"><span>￥7.9</span><i>光明发酵乳</i></p>
-    <div class="shop_intro">
-        <div class="shop_name">商家：<span>光明便利店</span></div>
-        <div class="weight">规格：<span>135g</span></div>
-        <div class="activity">活动：<span>暂无</span></div>
-        <div class="add_car">
-            <a class="button_add_car" href="#">加入购物车</a>
-            <div class="count_group">
-                <div class="count_odd"></div>
-                <span class="now_count">1</span>
-                <div class="count_add"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--商品详细信息弹出层结束-->
 @section scripts{
     <script type="text/javascript" src="/Scripts/common.js"></script>
     <script type="text/javascript" src="/Scripts/windowsheight.js"></script>
     <script src="~/Scripts/template.js"></script>
-    <script type="text/javascript">
-        var locationUrl = '@Url.Action("Location", "Home")/';
-    </script>
     <script type="text/html" id="shopitem">
         {{each content as item index}}
         <li data-gpsx="{{item.gpsX}}" data-gpsy="{{item.gpsY}}">
             <div class="producter_row">
-                <a href="@Url.Action("Index","Shop")?cataid=81&merchantsid={{item.id}}">
+                <a href="@Url.Action("Index", "Shop")?cataid=81&merchantsid={{item.id}}">
                     <img class="fl shoper_img" src="{{item.image}}">
                     <div class="shoper_mess fl">
-                        <p>{{item.name}}<i>配</i></p>
-                        <div class="saled_order">
+                        <p>{{item.merchantsName}}<i>配</i></p>
+                        <div class="saled_order" data-num="{{item.evaluationNum}}">
                             <img src="/content/images/liu_23.png" class="star">
                             <img src="/content/images/liu_23.png" class="star">
                             <img src="/content/images/liu_23.png" class="star">
                             <img src="/content/images/liu_23.png" class="star">
                             <img src="/content/images/liu_23.png" class="star">
-                            已售100单
+                            已售{{item.orderNum}}单
                         </div>
-                        <span>{{item.address}} | 新鲜蔬菜</span>
+                        <span>{{item.address}} | {{item.productType}}</span>
                     </div>
-                    <div class="distance fl"><p>1.0公里</p></div>
+                    <div class="distance fl"><p>{{item.distance}}</p></div>
                     <div class="clear"></div>
                 </a>
             </div>
