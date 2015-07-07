@@ -46,7 +46,7 @@
                 <div class="clear"></div>
             </ul>
             <div class="car_shop">
-                <a href="@Url.Action("Car","Shop")"><img src="/content/images/s_27.png"><span>1</span></a>
+                <a href="@Url.Action("Car","Shop")"><img src="/content/images/s_27.png"><span class="shopcartNumber">1</span></a>
             </div>
         </div>
         <div id="snacklist" style="display:none;">
@@ -54,7 +54,7 @@
                 <div class="clear"></div>
             </ul>
             <div class="car_shop">
-                <a href="@Url.Action("Car", "Shop")"><img src="/content/images/s_27.png"><span>1</span></a>
+                <a href="@Url.Action("Car", "Shop")"><img src="/content/images/s_27.png"><span class="shopcartNumber">1</span></a>
             </div>
         </div>
         <div id="marketlist" style="display:none;">
@@ -62,7 +62,7 @@
                 <div class="clear"></div>
             </ul>
             <div class="car_shop">
-                <a href="@Url.Action("Car", "Shop")"><img src="/content/images/s_27.png"><span>1</span></a>
+                <a href="@Url.Action("Car", "Shop")"><img src="/content/images/s_27.png"><span class="shopcartNumber">1</span></a>
             </div>
         </div>
     </div>
@@ -97,7 +97,7 @@
         {{/each}}
     </script>
     <script type="text/html" id="productitem">
-        {{each content as value item}}
+        {{each content as item index}}
         <li>
             <a href="{{item.id}}" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(255, 255, 255);">
                 <img src="{{item.image}}" class="fruit_img">
@@ -113,7 +113,8 @@
             indexcommuntityUrl: "http://120.24.228.51:8080/20150623/weixin/community/index_community.jhtml",
             communtityListUrl: "http://120.24.228.51:8080/20150623/weixin/community/list.jhtml",
             merchantsList: "http://120.24.228.51:8080/20150623/weixin/merchants/list.jhtml?communityId=",
-            productlist: "http://120.24.228.51:8080/20150623/weixin/product/list/{cata}.jhtml"
+            productlist: "http://120.24.228.51:8080/20150623/weixin/product/list/{cata}.jhtml",
+            ShopCarCount: "http://120.24.228.51:8080/20150623/weixin/cart/quantity.jhtml"
         });
         index.RegisterIndex();
     </script>

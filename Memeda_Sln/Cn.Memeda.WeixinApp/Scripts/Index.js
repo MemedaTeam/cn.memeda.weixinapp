@@ -8,6 +8,7 @@
         this.productlist = option.hasOwnProperty("productlist") && option.productlist || "";
         this.orderList = option.hasOwnProperty("orderList") && option.orderList || "";
         this.orderitemurl = option.hasOwnProperty("orderitemurl") && option.orderitemurl || "";
+        this.ShopCarCount = option.hasOwnProperty("ShopCarCount") && option.ShopCarCount || "";
     };
     indexPage.prototype = {
         GetParameter: function (pName) {
@@ -21,16 +22,6 @@
             return new Date(parseInt(tm) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
         },
         getIndexCommunity: function () {
-            var that = this;
-            $.ajax({
-                method: method,
-                url: that.indexcommuntityUrl+"?openId=987654",
-                data: null,
-                success: function (data) {
-
-                    $("#indexcommuntity a").attr("href", locationUrl + data.id).find("span").val(data.name);
-                    that.getmerchantList(data.id);
-                }
             var that = this, loc = that.GetParameter("loc"), locationUrl = "/home/location/";
             if (loc > 0) {
                 that.getmerchantList(loc);
@@ -211,6 +202,11 @@
             //    }
             //});
         },
+        getShopCartCount: function () {
+            this.innerAjax(this.ShopCarCount, {}, function (data) {
+                $(".shopcartNumber").text(data.quantity);
+            });
+        },
         innerAjax: function (url, data, callback) {
             data = data || {};
             data.openid = '123456';
@@ -263,7 +259,8 @@
                     loadmarket = 1;
                 });
             }
-            this.getIndexCommunity();
+            that.getIndexCommunity();
+            that.getShopCartCount();
         },
         RegisterOrder: function () {
             var that = this, loadunpaid = 0, loadunderway = 0;
@@ -297,7 +294,7 @@
             }
             if ($("#underwayhref").length > 0) {
                 $("#underwayhref").click(function () {
-                    if (loadunderway==0) {
+                    if (loadunderway == 0) {
                         that.getAllOrderList($("#underway"), '', 'shipped');
                     }
                     loadunderway = 1;
@@ -307,6 +304,7 @@
         RegisterOrderInfo: function () {
             this.getOrderItemInfo();
         }
+
     };
     window.IndexPage = indexPage;
 })();
