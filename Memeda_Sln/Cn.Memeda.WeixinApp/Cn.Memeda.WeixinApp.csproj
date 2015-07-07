@@ -234,7 +234,6 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\shop\car.js" />
     <Content Include="Scripts\shop\shop.js" />
-    <Content Include="Scripts\template-native.js" />
     <Content Include="Scripts\template.js" />
     <Content Include="Scripts\windowsheight.js" />
     <Content Include="Scripts\_references.js" />

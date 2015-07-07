@@ -68,16 +68,6 @@
                 var html = template("productitem", data);
                 parentEle.find("ul").html(html);
             });
-            //$.ajax({
-            //    method: method,
-            //    url: that.productlist.replace("{cata}", cataid),
-            //    data: null,
-            //    success: function (data) {
-            //        console.log(data);
-            //        var html = template("productitem", data);
-            //        parentEle.find("ul").html(html);
-            //    }
-            //});
         },
         getAllOrderList: function (parentEle, paymentStatus, shippingStatus) {
             var that = this;
