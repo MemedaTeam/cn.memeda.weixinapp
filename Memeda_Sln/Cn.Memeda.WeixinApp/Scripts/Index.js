@@ -14,7 +14,7 @@
             var that = this;
             $.ajax({
                 method: method,
-                url: that.indexcommuntityUrl,
+                url: that.indexcommuntityUrl+"?openId=987654",
                 data: null,
                 success: function (data) {
 

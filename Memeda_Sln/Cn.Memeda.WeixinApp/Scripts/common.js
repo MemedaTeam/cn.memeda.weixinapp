@@ -1,5 +1,7 @@
 // JavaScript Document
-
+$(document).ready(function (e) {
+    SetCookie("openid","123456",7);
+});
 //验证手机号码
 function ValidPhone(phoneNumber) {
     if (phoneNumber == undefined || phoneNumber == '') {
@@ -59,10 +61,11 @@ function GetRequest() {
 }
 //添加商品到购物车
 function AddToCar(id, quantity) {
+    var openid = GetCookie("openid");
     $.ajax({
         type: "Post",
         url: " http://120.24.228.51:8080/20150623/weixin/cart/add.jhtml",
-        data: { id: id, quantity: quantity },
+        data: { id: id, quantity: quantity,openid:openid },
         dataType: "json",
         crossDomain: true,
         beforeSend: function () { },
@@ -72,4 +75,9 @@ function AddToCar(id, quantity) {
         error: function () { },
         complete: function () { }
     });
+}
+//进入购物车
+function GoToCar()
+{
+    location.href = "/shop/car";
 }

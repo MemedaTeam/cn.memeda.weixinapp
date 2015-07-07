@@ -1,5 +1,8 @@
 ﻿/*登录和注册*/
+var loginErrorEle = $('#car-error-message');
+var openid;
 $(document).ready(function (e) {
+    openid = GetCookie("openid");
     var phoneEle = $('#car-phone-number');
     //send valid code
     $('#btn-car-valid-code').click(function () {
@@ -8,14 +11,14 @@ $(document).ready(function (e) {
         var phoneNumber = phoneEle.val().trim();
         if (ValidPhone(phoneNumber)) {
             seconds = 60;
-            $('#btn-login-valid-code').hide();
-            $('#login-count-down').show();
+            $('#btn-car-valid-code').hide();
+            $('#car-count-down').show();
             TimerCountDown();
             //发送验证码
             $.ajax({
                 type: "post",
                 url: "http://120.24.228.51:8080/20150623/weixin/register/sendSms.jhtml",
-                data: { phone: phoneNumber },
+                data: { phone: phoneNumber,openid:openid },
                 dataType: "json",
                 jsonp: "jsoncallback",
                 crossDomain: true,
@@ -31,46 +34,7 @@ $(document).ready(function (e) {
         }
 
     });
-    //Login or register
-    $('#btn-login').click(function () {
-        var currentSmsCode = $('#login-valid-code').val().trim();
-        var regCode = /^(\d{4})$/;
-        if (smscode == undefined || smscode == '') {
-            loginErrorEle.html('请输入验证码！');
-            return;
-        }//!regCode.test(smsCode) &&
-        if (currentSmsCode != smscode) {
-            loginErrorEle.html('验证码不正确！');
-            return;
-        }
-        var phone=phoneEle.val();
-        $.ajax({
-            type: "POST",
-            url: " http://120.24.228.51:8080/20150623/weixin/register/validationSms.jhtml",
-            data: { code: smscode, phone: phone,username:phone },
-            dataType: "json",
-            jsonp: "jsoncallback",
-            crossDomain: true,
-            beforeSend: function () { },
-            success: function (data) {
-                if (data.type == 'success') {
-                    location.href = "/home/index";
-                }
-                else { loginErrorEle.html(data.content); }
-            },
-            error: function () { },
-            complete: function () { }
-        });
-    });
-    //添加商品到购物车
-    $('#btn-add-to-car').click(function () {
-        $('#shop-car-goods-count').html(0);
-    });
-    LoadShopInfomation(1);
-    LoadShopGoodsList(1);
 });
-function SendSMSCode() {
-}
 var seconds = 0;
 //倒计时
 function TimerCountDown() {
@@ -84,4 +48,23 @@ function TimerCountDown() {
 
     }
     seconds--;
+}
+//加载购物车信息
+function LoadShopCarInformation() {
+    $.ajax({
+        type: "post",
+        url: "http://120.24.228.51:8080/20150623/weixin/cart/list.jhtml",
+        data: { openid: openid },
+        dataType: "json",
+        jsonp: "jsoncallback",
+        crossDomain: true,
+        beforeSend: function () { },
+        success: function (data) {
+            if (data.type == 'success') {
+            }
+            else { loginErrorEle.html(data.content); }
+        },
+        error: function () { },
+        complete: function () { }
+    });
 }
