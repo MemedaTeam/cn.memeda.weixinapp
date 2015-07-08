@@ -24,13 +24,14 @@
             var that = this;
             $.ajax({
                 method: method,
-                url: that.indexcommuntityUrl+"?openId=987654",
+                url: that.indexcommuntityUrl,
                 data: null,
                 success: function (data) {
 
                     $("#indexcommuntity a").attr("href", locationUrl + data.id).find("span").val(data.name);
                     that.getmerchantList(data.id);
                 }
+            });
             var that = this, loc = that.GetParameter("loc"), locationUrl = "/home/location/";
             if (loc > 0) {
                 that.getmerchantList(loc);

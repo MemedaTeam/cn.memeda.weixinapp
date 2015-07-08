@@ -112,7 +112,7 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 .login_text { width: 100%; display: block; border: none; font-size: 0.9166666666666667em; height: 3.454545454545455em; line-height: 3.454545454545455em; color: #999999; }
 .table_border td { border-bottom: 1px solid #eeeeee; }
 .identi_code { position: relative; }
-    .identi_code a { line-height: 2.166666666666667em; font-size: 1em; display: inline-block; color: #ffffff; background: #01a704; position: absolute; right: 0; top: 0.5em; padding: 0 0.5em; border-radius: 3px; }
+    .identi_code a { line-height: 2.166666666666667em; font-size: 1em; display: inline-block; color: #ffffff;  position: absolute; right: 0; top: 0.5em; padding: 0 0.5em; border-radius: 3px; }
 .protocol { font-size: 0.9166666666666667em; padding-bottom: 0.5em; }
     .protocol a { color: #ed6a02; }
 .button_sure { background: #ed6a02; color: #ffffff; text-align: center; border-radius: 3px; font-size: 1.166666666666667em; line-height: 2.5em; display: block; border: none; width: 100%; }
@@ -157,9 +157,9 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
     .submit_order_con span { color: #ed6a02; font-size: 1.357142857142857em; }
     .submit_order_con input { font-size: 1em; display: block; position: absolute; width: 30%; height: 2.142857142857143em; right: 0; top: 0.5357142857142857em; background: #ed6a02; color: #fff; text-align: center; border-radius: 3px; cursor: pointer; }
 
-/*收货地址*/
+/*收货地址
 .goods_table { }
-    .goods_table tr td span { display: block; width: 98%; text-align: justify; }
+    .goods_table tr td span { display: block; width: 98%; text-align: justify; }*/
 .goods_span { font-size: 1em; color: #333333; line-height: 2.714285714285714em; height: 2.714285714285714em; }
 #phone_number { font-family: Arial, Helvetica, sans-serif; }
 .house_number { background: url(/content/images/men_11.jpg) no-repeat 87.23404255319149% center; background-size: auto 52.63157894736842%; }
@@ -255,10 +255,16 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 
 /*********************** xueqiang 修改 start ********************/
 #loginForm { margin: 55px 0 0 0; }
-    #loginForm .error-message { color: #ff0000; font-size: .8em; }
+.error-message { color: #ff0000; font-size: .8em; }
 .login_text { width: 70%; }
-#loginForm #login-count-down { font-size: .5em; background-color: #999999; padding: 5px 10px; top: .8em; cursor: text; display: none; }
-    #loginForm #login-count-down:hover, #loginForm #login-count-down:active { text-decoration: none; }
+#car-count-down { font-size: .5em; background-color: #999999; padding: 5px 10px; top: .8em; cursor: text; display: none; }
+    #car-count-down:hover, #car-count-down:active { text-decoration: none; }
+.btn-car-valid-code-green {
+    background: #01a704;
+}
+.btn-car-valid-code-gray {
+    background: #999;
+}
 .producter_con_shop li p { font-size: .8em; margin-top: 5px; }
 .shop-main { width: 100%; }
 .shop-fixed { width: 100%; height: 100%; }

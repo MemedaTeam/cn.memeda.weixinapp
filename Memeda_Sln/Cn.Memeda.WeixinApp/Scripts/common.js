@@ -61,7 +61,13 @@ function GetRequest() {
 }
 //添加商品到购物车
 function AddToCar(id, quantity) {
-    var openid = GetCookie("openid");
+    var ele = $('#car-error-message');
+    if (quantity == 0)
+    {
+        ele.html('请选择商品数量!');
+        return;
+    }
+    var openid = GetOpenid();
     $.ajax({
         type: "Post",
         url: " http://120.24.228.51:8080/20150623/weixin/cart/add.jhtml",
@@ -70,14 +76,18 @@ function AddToCar(id, quantity) {
         crossDomain: true,
         beforeSend: function () { },
         success: function (data) {
-            return data;
+            ele.html(data.content);
         },
         error: function () { },
         complete: function () { }
     });
 }
+//获取openid
+function GetOpenid() {
+    return GetCookie("openid");
+}
 //进入购物车
 function GoToCar()
 {
-    location.href = "/shop/car";
+    location.href = "/shop/car?openid="+GetOpenid();
 }

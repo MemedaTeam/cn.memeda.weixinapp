@@ -5,7 +5,7 @@
 <div class="content content_bottom_fix">
     <div class="container">
         <form action="" target="_blank" method="post">
-            <span id="car-error-message"></span>
+            <span id="car-error-message" class="error-message"></span>
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_login goods_table">
                 <tr class="table_border">
                     <td width="21.66666666666667%"><span>收 货 人</span></td>
@@ -15,27 +15,56 @@
                     <td><span>手机号码</span></td>
                     <td><div class="identi_code">
                         <input type="text" class="login_text goods_span" id="phone_number" value="" />
-                            <a href="#" id="btn-car-valid-code">发送验证码</a>
-                            <a href="javascript:void(0);" id="car-count-down"><span></span>秒后重新发送</a>
+                            <a href="#" id="btn-car-valid-code" class="btn-car-valid-code-green">发送验证码</a>
+                            <a href="javascript:void(0);" id="car-count-down"><span id="car-time"></span><span>秒重新发送</span></a>
                         </div>
                     </td>
                 </tr>
-                <tr class="table_border" style="display:none;">
+                <tr class="table_border" id="car-show-valid-code" style="display:none;">
                     <td><span>验 证 码</span></td>
                     <td><input type="text" class="login_text" id="code" placeholder="请输入验证码" /></td>
                 </tr>
                 <tr class="table_border">
-                    <td><span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</span></td>
-                    <td><input type="text" class="login_text goods_span" id="number" placeholder="陆家嘴国际华城" /></td>
+                    <td><span>城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市</span></td>
+                    <td><input type="text" class="login_text goods_span" id="receive-city" placeholder="请输入所在城市" /></td>
                 </tr>
                 <tr>
-                    <td><span>门 牌 号</span></td>
-                    <td><input type="text" class="login_text" id="car-house_number" placeholder="请输入您的单元号、门牌号等" /></td>
+                    <td><span>详细地址</span></td>
+                    <td><input type="text" class="login_text" id="receive-address" placeholder="请输入收货的详细地址" /></td>
                 </tr>
             </table>
         </form>
     </div>
     <div class="height_30"></div>
+    <div id="car-goods-list">
+
+    </div>
+    <div class="trolley_block container">
+        <div class="trolley_top">
+            <img src="/Content/images/shop_28.jpg">
+            <div class="trolley_name fl">
+                <a href="#">旺客隆果业苗圃店</a>
+                <p>满￥30起送</p>
+            </div>
+            <span class="fr">￥190.00</span>
+            <div class="clear"></div>
+        </div>
+        <div class="trolley_bottom">
+            <img src="/Content/images/shop_17.jpg" class="fl">
+            <div class="tro_bottom_con">
+                <p>AAA级车厘子</p>
+                <span>35元/250g</span>
+                <i>38.00元</i>
+            </div>
+            <div class="add_trolley">
+                <div class="count_group trolley_group">
+                    <div class="count_odd"></div>
+                    <span class="now_count">1</span>
+                    <div class="count_add"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="trolley_block container">
         <div class="trolley_top">
             <img src="/Content/images/shop_28.jpg">
@@ -70,10 +99,14 @@
     <div class="footer_trolley_con">
         <div class="trolley_count">共计<span>5</span>件</div>
         <p>￥<i>10.00</i></p>
-        <a href="#" class="trolley_next">提交订单 ></a>
+        <a href="#" class="trolley_next" id="btn-submit-order">下一步 ></a>
     </div>
 </div>
 <!-----------内容结束--------------->
 <!--30元起送 弹出层-->
 <div class="fixed" style="display:none;"></div>
 <div class="product_detail" style="display:none;"></div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/shop")
+}
