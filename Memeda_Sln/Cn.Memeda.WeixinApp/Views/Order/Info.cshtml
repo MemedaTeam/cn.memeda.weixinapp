@@ -5,8 +5,8 @@
 
 <!-----------内容开始--------------->
 <div class="content ">
-    
-    
+
+
     <div id="sendtime" class="arrive_time">
         <img src="/content/images/order_12.jpg">
         <p>预计送达时间：</p>
@@ -25,19 +25,19 @@
     <div class="submit_order">
         <div class="submit_order_con">
             <p>总价：<span id="allprice"></span></p>
-            <input type="submit" value="支付结算" />
+            <input type="submit" id="submitorder" value="支付结算" />
         </div>
     </div>
 </div>
 <!-----------内容结束--------------->
 @section scripts{
-    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript" src="/Scripts/common.js"></script>
     <script type="text/javascript" src="/Scripts/windowsheight.js"></script>
     <script src="~/Scripts/Index.js"></script>
     <script>
         var index = new IndexPage({
-            orderitemurl: "http://120.24.228.51:8080/20150623/weixin/member/order/view.jhtml"
+            orderitemurl: "http://120.24.228.51:8080/20150623/weixin/member/order/view.jhtml",
+            payurl: "http://120.24.228.51:8080/20150623/weixin/payment/submit.jhtml"
         });
         index.RegisterOrderInfo();
     </script>

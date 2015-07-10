@@ -9,6 +9,7 @@
         this.orderList = option.hasOwnProperty("orderList") && option.orderList || "";
         this.orderitemurl = option.hasOwnProperty("orderitemurl") && option.orderitemurl || "";
         this.ShopCarCount = option.hasOwnProperty("ShopCarCount") && option.ShopCarCount || "";
+        this.payurl = option.hasOwnProperty("payurl") && option.payurl || "";
     };
     indexPage.prototype = {
         GetParameter: function (pName) {
@@ -196,11 +197,17 @@
                 $(".shopcartNumber").text(data.quantity);
             });
         },
-        innerAjax: function (url, data, callback) {
+        getPay: function () {
+            this.innerAjax(this.payurl, { "type": "payment", "paymentPluginId": "WeixinpayPlugin", "sn": "20150630914", "amount": 100 }, function (data) {
+                
+            },"post");
+        },
+        innerAjax: function (url, data, callback,mtd) {
             data = data || {};
+            mtd = mtd || method;
             data.openid = '123456';
             $.ajax({
-                method: method,
+                method: mtd,
                 url: url,
                 data: data,
                 success: function (result) {
@@ -291,7 +298,11 @@
             }
         },
         RegisterOrderInfo: function () {
+            var that = this;
             this.getOrderItemInfo();
+            $("#submitorder").click(function () {
+                that.getPay();
+            });
         }
 
     };
