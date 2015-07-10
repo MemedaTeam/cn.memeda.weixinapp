@@ -5,13 +5,14 @@ $(document).ready(function (e) {
     request = GetRequest();
     var cataID = request["cataid"];
     var merchantsId = request["merchantsId"];
-    var openid = GetCookie("openid");
-    LoadShopInfomation(merchantsId,openid);
-    LoadShopGoodsList(merchantsId,cataID,openid);
+    LoadShopInfomation(merchantsId);
+    LoadShopGoodsList(merchantsId, cataID);
+    GetCarGoodsCount();
     //购物车
-    $(".button_add_car").click(function () {
-        $(this).css("z-index", "1");
-        $(".count_group").css("z-index", "2");
+    $("#btn-goto-car").click(function () {
+        //$(this).css("z-index", "1");
+        //$(".count_group").css("z-index", "2");
+        GoToCar();
     });
     var product_account = parseInt($(".now_count").text());
     //减少商品
@@ -45,6 +46,23 @@ $(document).ready(function (e) {
         var data = AddToCar(id, product_account);
     });
 });
+//获取购物车商品数量
+function GetCarGoodsCount() {
+    $.ajax({
+        type: "get",
+        url: " http://120.24.228.51:8080/20150623/weixin/cart/quantity.jhtml",
+        data: { openid: GetOpenid() },
+        dataType: "json",
+        crossDomain: true,
+        beforeSend: function () { },
+        success: function (data) {
+            if (data != null && data.quantity > 0)
+                $(".car_shop span").text(data.quantity);
+        },
+        error: function () { },
+        complete: function () { }
+    });
+}
 /*购物车图标*/
 function car_span() {
     var car_span = $(".car_shop span").text();
@@ -56,11 +74,11 @@ function car_span() {
     }
 }
 //加载店铺信息
-function LoadShopInfomation(merchantsId,openid) {
+function LoadShopInfomation(merchantsId) {
     $.ajax({
         type: "Get",
         url: " http://120.24.228.51:8080/20150623/weixin/merchants/getMerchantsById.jhtml",
-        data: { merchantsId: merchantsId,openid:openid },
+        data: { merchantsId: merchantsId,openid:GetOpenid() },
         dataType: "json",
         crossDomain: true,
         beforeSend: function () { },
@@ -80,11 +98,11 @@ function LoadShopInfomation(merchantsId,openid) {
     });
 }
 //加载店铺商品
-function LoadShopGoodsList(merchantsId,cataID,openid) {
+function LoadShopGoodsList(merchantsId,cataID) {
     $.ajax({
         type: "Get",
         url: " http://120.24.228.51:8080/20150623/weixin/product/list/"+cataID+".jhtml",
-        data: { merchantsId: merchantsId,openid:openid },
+        data: { merchantsId: merchantsId,openid:GetOpenid() },
         dataType: "json",
         crossDomain: true,
         beforeSend: function () { },
