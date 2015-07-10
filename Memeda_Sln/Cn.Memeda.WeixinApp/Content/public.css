@@ -272,5 +272,8 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 .shop-button-add-car { width: 100%; margin-top: 5px; }
 .producter_con_shop li > a > p { height: 40px; overflow-y: hidden; }
 .button_add_car { padding-left: 20.31325301204819%; background: #ed6a02 url(/content/images/jg_25.jpg) no-repeat 10% center; }
+#car-goods-list {
+    margin-bottom:6em;
+}
 
 /*********************** xueqiang 修改 end ********************/

@@ -45,19 +45,25 @@
             <ul class="producter_con_shop">
                 <div class="clear"></div>
             </ul>
-            <div class="car_shop"><a href="shopping_trolley.html"><img src="/content/images/s_27.png"><span>1</span></a></div>
+            <div class="car_shop">
+                <a href="@Url.Action("Car","Shop")"><img src="/content/images/s_27.png"><span class="shopcartNumber">1</span></a>
+            </div>
         </div>
         <div id="snacklist" style="display:none;">
             <ul class="producter_con_shop">
                 <div class="clear"></div>
             </ul>
-            <div class="car_shop"><a href="shopping_trolley.html"><img src="/content/images/s_27.png"><span>1</span></a></div>
+            <div class="car_shop">
+                <a href="@Url.Action("Car", "Shop")"><img src="/content/images/s_27.png"><span class="shopcartNumber">1</span></a>
+            </div>
         </div>
         <div id="marketlist" style="display:none;">
             <ul class="producter_con_shop">
                 <div class="clear"></div>
             </ul>
-            <div class="car_shop"><a href="shopping_trolley.html"><img src="/content/images/s_27.png"><span>1</span></a></div>
+            <div class="car_shop">
+                <a href="@Url.Action("Car", "Shop")"><img src="/content/images/s_27.png"><span class="shopcartNumber">1</span></a>
+            </div>
         </div>
     </div>
 </div>
@@ -91,12 +97,12 @@
         {{/each}}
     </script>
     <script type="text/html" id="productitem">
-        {{each content as value item}}
+        {{each content as item index}}
         <li>
             <a href="{{item.id}}" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(255, 255, 255);">
                 <img src="{{item.image}}" class="fruit_img">
                 <p><span class="fr"><i class="weight">{{item.weight}}{{item.unit}}</i>/份</span><i>{{item.name}}</i></p>
-                <div class="product_price"><img src="/content/images/car_07.jpg"><i>￥{{item.price}}</i><span>￥29.5</span></div>
+                <div class="product_price"><img src="/content/images/car_07.jpg"><i>￥{{item.marketPrice}}</i><span>￥{{item.price}}</span></div>
             </a>
         </li>
         {{/each}}
@@ -107,7 +113,8 @@
             indexcommuntityUrl: "http://120.24.228.51:8080/20150623/weixin/community/index_community.jhtml",
             communtityListUrl: "http://120.24.228.51:8080/20150623/weixin/community/list.jhtml",
             merchantsList: "http://120.24.228.51:8080/20150623/weixin/merchants/list.jhtml?communityId=",
-            productlist: "http://120.24.228.51:8080/20150623/weixin/product/list/{cata}.jhtml"
+            productlist: "http://120.24.228.51:8080/20150623/weixin/product/list/{cata}.jhtml",
+            ShopCarCount: "http://120.24.228.51:8080/20150623/weixin/cart/quantity.jhtml"
         });
         index.RegisterIndex();
     </script>

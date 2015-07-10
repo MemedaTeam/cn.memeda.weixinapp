@@ -8,6 +8,7 @@
         this.productlist = option.hasOwnProperty("productlist") && option.productlist || "";
         this.orderList = option.hasOwnProperty("orderList") && option.orderList || "";
         this.orderitemurl = option.hasOwnProperty("orderitemurl") && option.orderitemurl || "";
+        this.ShopCarCount = option.hasOwnProperty("ShopCarCount") && option.ShopCarCount || "";
     };
     indexPage.prototype = {
         GetParameter: function (pName) {
@@ -79,16 +80,6 @@
                 var html = template("productitem", data);
                 parentEle.find("ul").html(html);
             });
-            //$.ajax({
-            //    method: method,
-            //    url: that.productlist.replace("{cata}", cataid),
-            //    data: null,
-            //    success: function (data) {
-            //        console.log(data);
-            //        var html = template("productitem", data);
-            //        parentEle.find("ul").html(html);
-            //    }
-            //});
         },
         getAllOrderList: function (parentEle, paymentStatus, shippingStatus) {
             var that = this;
@@ -222,6 +213,11 @@
             //    }
             //});
         },
+        getShopCartCount: function () {
+            this.innerAjax(this.ShopCarCount, {}, function (data) {
+                $(".shopcartNumber").text(data.quantity);
+            });
+        },
         innerAjax: function (url, data, callback) {
             data = data || {};
             data.openid = '123456';
@@ -274,7 +270,8 @@
                     loadmarket = 1;
                 });
             }
-            this.getIndexCommunity();
+            that.getIndexCommunity();
+            that.getShopCartCount();
         },
         RegisterOrder: function () {
             var that = this, loadunpaid = 0, loadunderway = 0;
@@ -308,7 +305,7 @@
             }
             if ($("#underwayhref").length > 0) {
                 $("#underwayhref").click(function () {
-                    if (loadunderway==0) {
+                    if (loadunderway == 0) {
                         that.getAllOrderList($("#underway"), '', 'shipped');
                     }
                     loadunderway = 1;
@@ -318,6 +315,7 @@
         RegisterOrderInfo: function () {
             this.getOrderItemInfo();
         }
+
     };
     window.IndexPage = indexPage;
 })();
