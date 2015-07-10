@@ -93,11 +93,20 @@
                             "<div class=\"order_number_con\">" +
                             "<p>订单号：" + item.order.sn + "</p>" +
                             "<span>下单时间：" + item.order.createDate + "</span> " +
-                            "<div class=\"pay_block\">" +
-                            "<span>" + item.order.orderStatus + "</span> " +
-                            "</div>" +
-                            "</div>" +
-                            "</div>";
+                            "<div class=\"pay_block\">";
+                        //if (item.order.orderStatus == "unconfirmed") {
+                        //    html += "<span>" + item.order.orderStatusName + "</span> ";
+                        //    //html += '<a href="/order/info">立即支付</a>';
+                        //} else
+                        if (item.order.paymentStatus == "unpaid") {
+                            html += '<a href="/order/info/?sn=' + item.order.sn +
+                            '">立即支付</a>';
+                        } else if (item.order.shippingStatus == "unshipped") {
+                            html += "<span>" + item.order.paymentStatus + "</span> ";
+                        }
+                        html += "</div>" +
+                        "</div>" +
+                        "</div>";
                         if ('merchants' in item && item.merchants.length > 0) {
                             html += ' <div class="order_block container">';
                             for (var j = 0; j < item.merchants.length; j++) {
@@ -136,82 +145,62 @@
                     parentEle.html(html);
                 }
             });
-            //$.ajax({
-            //    method: method,
-            //    url: that.orderList,
-            //    data: { "paymentStatus": paymentStatus, "shippingStatus": shippingStatus, "openid": "123456" },
-            //    success: function (data) {
-            //        data = data || {};
-            //        if ('content' in data && data.content.length > 0) {
-            //            var html = '';
-            //            for (var i = 0; i < data.content.length; i++) {
-            //                var item = data.content[i];
-            //                html += "<div class=\"order_number\">" +
-            //                    "<div class=\"order_number_con\">" +
-            //                    "<p>订单号：" + item.order.sn + "</p>" +
-            //                    "<span>下单时间：" + item.order.createDate + "</span> " +
-            //                    "<div class=\"pay_block\">" +
-            //                    "<span>" + item.order.orderStatus + "</span> " +
-            //                    "</div>" +
-            //                    "</div>" +
-            //                    "</div>";
-            //                if ('merchants' in item && item.merchants.length > 0) {
-            //                    html += ' <div class="order_block container">';
-            //                    for (var j = 0; j < item.merchants.length; j++) {
-            //                        var shop = item.merchants[j];
-            //                        html += '<div class="store_mess">' +
-            //                            '<img src="' + shop.img + '" class="fl"/>' +
-            //                            '<p class="fl">' + shop.merchantsName + '</p>' +
-            //                            '<div class="clear"></div>' +
-            //                            '</div>' +
-            //                            '<ul class="order_list_ul">';
-            //                        if ('orderItem' in shop && shop.orderItem.length > 0) {
-            //                            for (var k = 0; k < shop.orderItem.length; k++) {
-            //                                var orderItem = shop.orderItem[k];
-            //                                html += '<li>' +
-            //                                    '<img src="' + orderItem.thumbnail + '" class="fl"/>' +
-            //                                    '<div class="order_con fl">' +
-            //                                    '<p>' + orderItem.name + '<i class="fr">￥<font>' + orderItem.price + '</font>/份</i></p>' +
-            //                                    '<span>X<font>' + orderItem.quantity + '</font></span>' +
-            //                                    '<div class="count_order">小计：￥' + orderItem.subtotal + '</div>' +
-            //                                    '</div>' +
-            //                                    '<div class="clear"></div>' +
-            //                                    '</li>';
-            //                            }
-            //                        }
-            //                        html += '</ul>';
-            //                    }
-            //                    html += '</div>' +
-            //                        '<div class="dotted_line"></div>';
-            //                }
-            //                html += '<div class="order_account_bot container">' +
-            //                        '<span class="goods_mount">一共<i>' + ('quantity' in item.order ? item.order.quantity : 3) + '</i>件商品</span>' +
-            //                        '<span>合计：￥' + item.order.amountPaid + '</span>' +
-            //                        '</div>';
-            //            }
-
-            //            parentEle.html(html);
-            //        }
-            //    }
-            //});
         },
         getOrderItemInfo: function () {
             var that = this;
             that.innerAjax(that.orderitemurl, { "sn": this.GetParameter("sn") }, function (data) {
-                var list = { "content": data };
-                var html = template("orderItems", list);
+                var html = '';
+                var item = data;
+                html += "<div class=\"order_number\">" +
+                    "<div class=\"order_number_con\">" +
+                    "<p>订单号：" + item.order.sn + "</p>" +
+                    "<span>下单时间：" + item.order.createDate + "</span> ";
+                //    "<div class=\"pay_block\">";
+                //if (item.order.paymentStatus == "unpaid") {
+                //    html += '<a href="/order/info/?sn=' + item.order.sn +
+                //    '">立即支付</a>';
+                //} else if (item.order.shippingStatus == "unshipped") {
+                //    html += "<span>" + item.order.paymentStatus + "</span> ";
+                //}
+                //"</div>" +
+                html += "</div>" +
+                "</div>";
+                if ('merchants' in item && item.merchants.length > 0) {
+                    html += ' <div class="order_block container">';
+                    for (var j = 0; j < item.merchants.length; j++) {
+                        var shop = item.merchants[j];
+                        html += '<div class="store_mess">' +
+                            '<img src="' + shop.img + '" class="fl"/>' +
+                            '<p class="fl">' + shop.merchantsName + '</p>' +
+                            '<div class="clear"></div>' +
+                            '</div>' +
+                            '<ul class="order_list_ul">';
+                        if ('orderItem' in shop && shop.orderItem.length > 0) {
+                            for (var k = 0; k < shop.orderItem.length; k++) {
+                                var orderItem = shop.orderItem[k];
+                                html += '<li>' +
+                                    '<img src="' + orderItem.thumbnail + '" class="fl"/>' +
+                                    '<div class="order_con fl">' +
+                                    '<p>' + orderItem.name + '<i class="fr">￥<font>' + orderItem.price + '</font>/份</i></p>' +
+                                    '<span>X<font>' + orderItem.quantity + '</font></span>' +
+                                    '<div class="count_order">小计：￥' + orderItem.subtotal + '</div>' +
+                                    '</div>' +
+                                    '<div class="clear"></div>' +
+                                    '</li>';
+                            }
+                        }
+                        html += '</ul>';
+                    }
+                    html += '</div>';
+                }
+                html += '<div class="hejght_15"></div>';
+                $("#allprice").text("￥" + item.order.amountPaid);
+                //html += '<div class="order_account_bot container">' +
+                //        '<span class="goods_mount">一共<i>' + ('quantity' in item.order ? item.order.quantity : 3) + '</i>件商品</span>' +
+                //        '<span>合计：￥' + item.order.amountPaid + '</span>' +
+                //        '</div>';
                 $("#sendtime").before(html);
             });
-            //$.ajax({
-            //    method: method,
-            //    url: that.orderitemurl,
-            //    data: { "sn": this.GetParameter("sn") },
-            //    success: function (data) {
-            //        var list = { "content": data };
-            //        var html = template("orderItems", list);
-            //        $("#sendtime").before(html);
-            //    }
-            //});
         },
         getShopCartCount: function () {
             this.innerAjax(this.ShopCarCount, {}, function (data) {
