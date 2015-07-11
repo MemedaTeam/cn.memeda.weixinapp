@@ -267,6 +267,7 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Info.cshtml" />
     <Content Include="Views\Shop\Car.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
