@@ -265,9 +265,11 @@ function EditCarGoodsCount(id,count,goodsEle)
             if (data != null && data.message != null && data.message.type == "success") {
                 goodsEle.text(count);
                 var value = goodsEle.attr("value");
-                $("#index"+value+" .fr").html("￥" + data.subtotal);
+                $.each(data.merchants, function (i, item) {
+                    $("#index" + value + " .fr").html("￥" + item.subtotal);
+                });
                 $('#car-goods-total').html(data.quantity);
-                $('#car-goods-price').html(data.effectivePrice);
+                $('#car-goods-price').html(data.subtotal);
             }
             else {
                 loginErrorEle.html(data.message.content);
