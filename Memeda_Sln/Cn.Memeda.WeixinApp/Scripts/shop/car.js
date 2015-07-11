@@ -67,17 +67,17 @@ $(document).ready(function (e) {
             $.ajax({
                 type: "post",
                 url: "http://120.24.228.51:8080/20150623/weixin/member/order/save_receiver.jhtml",
-                data: { openid: GetOpenid(),consignee:name,areaName:city,address:address,phone:phoneNumber,code: code},
+                data: { areaId:792,openid: GetOpenid(),consignee:name,areaName:city,address:address,phone:phoneNumber,code: code,isDefault:true,zipCode:200000},
                 dataType: "json",
                 jsonp: "jsoncallback",
                 crossDomain: true,
                 beforeSend: function () { },
                 success: function (data) {
-                    if (data != null && data.message.type=='success') {
+                    if (data != null && data.type=='success') {
                         hasValidCode = false;
                         location.href = "/order/info?openid=" + GetOpenid();
                     }
-                    else { loginErrorEle.html(data.message.content); }
+                    else { loginErrorEle.html(data.content); }
                 },
                 error: function () { },
                 complete: function () { }
