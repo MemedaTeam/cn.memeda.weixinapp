@@ -23,17 +23,6 @@
             return new Date(parseInt(tm) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
         },
         getIndexCommunity: function () {
-            var that = this;
-            $.ajax({
-                method: method,
-                url: that.indexcommuntityUrl,
-                data: null,
-                success: function (data) {
-
-                    $("#indexcommuntity a").attr("href", locationUrl + data.id).find("span").val(data.name);
-                    that.getmerchantList(data.id);
-                }
-            });
             var that = this, loc = that.GetParameter("loc"), locationUrl = "/home/location/";
             if (loc > 0) {
                 that.getmerchantList(loc);

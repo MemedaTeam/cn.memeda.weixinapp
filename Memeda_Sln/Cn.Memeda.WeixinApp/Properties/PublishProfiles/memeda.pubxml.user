@@ -211,7 +211,7 @@
       <publishTime>06/24/2015 21:20:12</publishTime>
     </File>
     <File Include="Content/public.css">
-      <publishTime>07/09/2015 20:52:44</publishTime>
+      <publishTime>07/10/2015 21:34:33</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>06/23/2015 17:47:22</publishTime>
@@ -244,10 +244,10 @@
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="Scripts/common.js">
-      <publishTime>07/07/2015 20:58:10</publishTime>
+      <publishTime>07/10/2015 21:34:33</publishTime>
     </File>
     <File Include="Scripts/Index.js">
-      <publishTime>07/09/2015 23:47:36</publishTime>
+      <publishTime>07/10/2015 21:40:32</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>06/24/2015 21:20:12</publishTime>
@@ -280,10 +280,10 @@
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="Scripts/shop/car.js">
-      <publishTime>07/07/2015 20:58:10</publishTime>
+      <publishTime>07/10/2015 21:34:33</publishTime>
     </File>
     <File Include="Scripts/shop/shop.js">
-      <publishTime>07/07/2015 20:58:10</publishTime>
+      <publishTime>07/10/2015 21:34:33</publishTime>
     </File>
     <File Include="Scripts/template-native.js">
       <publishTime>07/05/2015 20:31:52</publishTime>
@@ -349,16 +349,16 @@
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/05/2015 20:14:26</publishTime>
+      <publishTime>07/10/2015 21:34:33</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="Views/Shop/Car.cshtml">
-      <publishTime>07/07/2015 20:58:10</publishTime>
+      <publishTime>07/10/2015 21:34:33</publishTime>
     </File>
     <File Include="Views/Shop/Index.cshtml">
-      <publishTime>07/07/2015 21:00:59</publishTime>
+      <publishTime>07/10/2015 21:34:33</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/23/2015 17:47:22</publishTime>

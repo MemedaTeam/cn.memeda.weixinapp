@@ -71,6 +71,7 @@
     <script type="text/javascript" src="/Scripts/common.js"></script>
     <script type="text/javascript" src="/Scripts/windowsheight.js"></script>
     <script src="~/Scripts/template.js"></script>
+    <script src="~/Scripts/shop/shop.js"></script>
     <script type="text/html" id="shopitem">
         {{each content as item index}}
         <li data-gpsx="{{item.gpsX}}" data-gpsy="{{item.gpsY}}">
@@ -99,7 +100,7 @@
     <script type="text/html" id="productitem">
         {{each content as item index}}
         <li>
-            <a href="{{item.id}}" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(255, 255, 255);">
+            <a href="#" value="{{item.id}}" style="border-right-width: 1px; border-right-style: solid; border-right-color: rgb(255, 255, 255);">
                 <img src="{{item.image}}" class="fruit_img">
                 <p><span class="fr"><i class="weight">{{item.weight}}{{item.unit}}</i>/份</span><i>{{item.name}}</i></p>
                 <div class="product_price"><img src="/content/images/car_07.jpg"><i>￥{{item.marketPrice}}</i><span>￥{{item.price}}</span></div>

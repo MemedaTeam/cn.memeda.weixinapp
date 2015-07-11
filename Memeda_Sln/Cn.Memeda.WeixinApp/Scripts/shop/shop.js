@@ -5,16 +5,18 @@ $(document).ready(function (e) {
     request = GetRequest();
     var cataID = request["cataid"];
     var merchantsId = request["merchantsId"];
-    LoadShopInfomation(merchantsId);
-    LoadShopGoodsList(merchantsId, cataID);
-    GetCarGoodsCount();
-    //购物车
-    $("#btn-goto-car").click(function () {
-        //$(this).css("z-index", "1");
-        //$(".count_group").css("z-index", "2");
-        GoToCar();
-    });
-    var product_account = parseInt($(".now_count").text());
+    if (location.href.toLowerCase().indexOf('/shop')) {
+        LoadShopInfomation(merchantsId);
+        LoadShopGoodsList(merchantsId, cataID);
+        GetCarGoodsCount();
+        //购物车
+        $("#btn-goto-car").click(function () {
+            //$(this).css("z-index", "1");
+            //$(".count_group").css("z-index", "2");
+            GoToCar();
+        });
+        var product_account = parseInt($(".now_count").text());
+    }
     //减少商品
     $(".count_odd").click(function () {
         if (product_account > 1) {
