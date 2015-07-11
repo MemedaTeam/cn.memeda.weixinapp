@@ -164,28 +164,30 @@ function LoadShopCarInformation() {
             if (data != null && data.merchants != null) {
                 var carGoodsList = '';
                 $.each(data.merchants, function (i, item) {
-                    carGoodsList += '<div class="trolley_block container" id="index'+item.id+'">';
+                    var carObject = item.cartItem[0];
+
+                    carGoodsList += '<div class="trolley_block container" id="index' + carObject.product.merchantsId + '">';
                         carGoodsList += '<div class="trolley_top">';
-                        $.each(item.cartItem, function (j, caritem) {
-                            carGoodsList += '<a href="#" class="car-remove-goods" value="' + caritem.id + '"><img src="/Content/images/shop_28.jpg"></a>';
+                        carGoodsList += '<a href="#" class="car-remove-goods" ><img src="/Content/images/shop_28.jpg"></a>';
                             carGoodsList += '<div class="trolley_name fl">';
-                            carGoodsList += '<a href="/shop/index?merchantsId=' + caritem.product.merchantsId + '&cataid=' + caritem.product.productCategoryId + '">' + item.merchantsName + '</a>';
+                            carGoodsList += '<a href="/shop/index?merchantsId=' + carObject.product.merchantsId + '&cataid=' + carObject.product.productCategoryId + '">' + item.merchantsName + '</a>';
                                 //carGoodsList += '<p>满￥30起送</p>';
                             carGoodsList += '</div>';
                             carGoodsList += '<span class="fr">￥' + item.subtotal + '</span>';
                             carGoodsList += '<div class="clear"></div>';
                         carGoodsList += '</div>';
+                        $.each(item.cartItem, function (j, caritem) {
                         carGoodsList += '<div class="trolley_bottom">';
-                            carGoodsList += '<img src="/Content/images/shop_17.jpg" class="fl">';
+                        carGoodsList += '<img src="'+caritem.product.image+'" class="fl">';
                             carGoodsList += '<div class="tro_bottom_con">';
                             carGoodsList += '<p>' + caritem.product.fullName + '</p>';
                             carGoodsList += '<span>' + caritem.product.price + '元/' + caritem.product.weight + caritem.product.unit + '</span>';
                             carGoodsList += '<i>' + caritem.product.price + '元</i>';
                             carGoodsList += '</div>';
                             carGoodsList += '<div class="add_trolley">';
-                                carGoodsList += '<div class="count_group trolley_group">';
+                                carGoodsList += '<div class="count_group trolley_group car-trolley-group">';
                                 carGoodsList += '<div class="count_odd" value=' + caritem.id + '></div>';
-                                    carGoodsList += '<span class="now_count">' + caritem.quantity + '</span>';
+                                carGoodsList += '<span class="now_count" value="' + caritem.product.merchantsId + '">' + caritem.quantity + '</span>';
                                     carGoodsList += '<div class="count_add" value=' + caritem.id + '></div>';
                                 carGoodsList += '</div>';
                             carGoodsList += '</div>';
@@ -198,58 +200,82 @@ function LoadShopCarInformation() {
                         $('#car-goods-total').html(data.cart.quantity);
                         $('#car-goods-price').html(data.cart.price);
                         //移除商品
-                        $('.car-remove-goods').click(function () {
-                            var id = $(this).attr("value");
-                            $.ajax({
-                                type: "post",
-                                url: " http://120.24.228.51:8080/20150623/weixin/cart/delete.jhtml",
-                                data: { id: id, openid: GetOpenid() },
-                                dataType: "json",
-                                crossDomain: true,
-                                beforeSend: function () { },
-                                success: function (data) {
-                                    if(data!=null)
-                                    {
-                                        
-                                        $('#car-goods-total').html(data.quantity);
-                                        $('#car-goods-price').html(data.effectivePrice);
-                                    }
-                                },
+                        //$('.car-remove-goods').click(function () {
+                        //    var id = $(this).attr("id");
+                        //    $.ajax({
+                        //        type: "post",
+                        //        url: " http://120.24.228.51:8080/20150623/weixin/cart/delete.jhtml",
+                        //        data: { id: id, openid: GetOpenid() },
+                        //        dataType: "json",
+                        //        crossDomain: true,
+                        //        beforeSend: function () { },
+                        //        success: function (data) {
+                        //            if (data != null && data.message!=null && data.message.type=="success") {
+                        //                $('#car-goods-total').html(data.quantity);
+                        //                $('#car-goods-price').html(data.effectivePrice);
+                        //            }
+                        //            else {
+                        //                loginErrorEle.html(data.message.content);
+                        //            }
+                        //        },
 
-                                error: function () { },
-                                complete: function () { }
-                            });
-                        });
+                        //        error: function () { },
+                        //        complete: function () { }
+                        //    });
+                        //});
+
                         //减少商品
-                        $(".count_odd").click(function () {
-                            if (product_account > 1) {
+                        $(".car-trolley-group>.count_odd").click(function () {
+                            var goodsEle = $(this).parent().find(".now_count");
+                            var product_account = parseInt(goodsEle.text());
+                            var id = $(this).attr("value");
+                            if (product_account >= 1) {                                
                                 product_account = product_account - 1;
-                                $(".now_count").text(product_account)
-                                $(".car_shop span").text(product_account);
-                                $(".trolley_count span").text(product_account);
+                                EditCarGoodsCount(id, product_account,goodsEle);
                             }
-                            else {
-                                product_account = 0;
-                                $(".now_count").text(product_account);
-                                $(".car_shop span").text(product_account);
-                                $(".count_group").css("z-index", "1");
-                                $(".button_add_car").css("z-index", "2");
-                            }
-                            car_span();
                         });
                         //增加商品
-                        $(".count_add").click(function () {
+                        $(".car-trolley-group>.count_add").click(function () {
+                            var goodsEle = $(this).parent().find(".now_count");
+                            var product_account = parseInt(goodsEle.text());
+                            var id = $(this).attr("value");
                             product_account = product_account + 1;
-                            $(".now_count").text(product_account)
-                            $(".car_shop span").text(product_account);
-                            $(".trolley_count span").text(product_account);
-                            car_span();
+                            EditCarGoodsCount(id,product_account,goodsEle);
                         });
                     }
                 });
             }
             else { loginErrorEle.html(data.content); }
         },
+        error: function () { },
+        complete: function () { }
+    });
+}
+//修改购物车商品数量
+function EditCarGoodsCount(id,count,goodsEle)
+{
+    $.ajax({
+        type: "post",
+        url: " http://120.24.228.51:8080/20150623/weixin/cart/edit.jhtml",
+        data: { id: id,quantity:count, openid: GetOpenid() },
+        dataType: "json",
+        crossDomain: true,
+        beforeSend: function () { },
+        success: function (data) {
+            if (data != null && data.message != null && data.message.type == "success") {
+                goodsEle.text(count);
+                var value = goodsEle.attr("value");
+                $.each(data.merchants, function (i, item) {
+                    $("#index" + value + " .fr").html("￥" + item.subtotal);
+                });
+                $('#car-goods-total').html(data.quantity);
+                $('#car-goods-price').html(data.subtotal);
+            }
+            else {
+                loginErrorEle.html(data.message.content);
+            }
+        },
+
         error: function () { },
         complete: function () { }
     });
