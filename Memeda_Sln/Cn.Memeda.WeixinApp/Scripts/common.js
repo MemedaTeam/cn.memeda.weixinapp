@@ -149,7 +149,7 @@ function LoadGoodsList(goodsList) {
     $.each(goodsList, function (i, item) {
         productList += '<li>';
         productList += '<a href="#" value="' + item.id + '">';
-        productList += '<img src="' + item.thumbnail + '" class="fruit_img" url="' + goodsList.image + '">';
+        productList += '<img src="' + item.image + '" class="fruit_img" url="' + item.image + '">';
         productList += '<p><span class="fr"><i class="weight">' + item.weight + '</i>/' + item.unit + '</span><i>' + item.name + '</i></p>';
         productList += '<div class="product_price"><img src="/Content/images/car_07.jpg" /><i>￥' + item.price + '</i><span>￥' + item.price + '</span></div>';
         productList += '</a>';
@@ -206,7 +206,7 @@ function ClearThirdBorderRight(goodsListEle) {
 function ShowGoodsDetail(id) {
     var product_alert = parseInt($(".product_detail").height());
     var margin_top = product_alert / 2 + 20;
-    $(".product_detail").css({ "top": "20%", "margin-top": -margin_top });
+    $(".product_detail").css({ "top": "40%", "margin-top": -margin_top });
     $("#btn-add-to-car").attr("value", id);
     $(".fixed").show();
     $(".product_detail").show();
