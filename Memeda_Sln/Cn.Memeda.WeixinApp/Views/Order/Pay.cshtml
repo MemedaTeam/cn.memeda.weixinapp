@@ -1,19 +1,19 @@
 ﻿@{
     ViewBag.Title = "Info";
-    ViewBag.subTitle = "确认订单";
+    ViewBag.subTitle = "支付结算";
 }
 
 <!-----------内容开始--------------->
 <div class="content ">
 
 
-    <div id="sendtime" class="arrive_time">
-            <img src="/content/images/order_12.jpg">
-            <p>预计送达时间：</p>
-            <span id=""><i>2015.05.15</i>15:00-16:00</span>
-        </div>
-        <div class="hejght_15"></div>
-        @*<div class="pay_style container">
+    @*<div id="sendtime" class="arrive_time">
+        <img src="/content/images/order_12.jpg">
+        <p>预计送达时间：</p>
+        <span><i>2015.05.15</i>15:00-16:00</span>
+    </div>*@
+    <div id="sendtime" class="hejght_15"></div>
+    <div class="pay_style container">
         支付方式:
         <div class="pay_right">
             <img src="/content/images/order_16.jpg" />
@@ -21,11 +21,11 @@
             <input type="checkbox" checked="checked" />
             <div class="clear"></div>
         </div>
-    </div>*@
+    </div>
     <div class="submit_order">
         <div class="submit_order_con">
             <p>总价：<span id="allprice"></span></p>
-            <input type="submit" id="submitorder" value="提交订单" />
+            <input type="submit" id="submitorder" value="支付结算" />
         </div>
     </div>
 </div>
@@ -37,10 +37,9 @@
     <script src="~/Scripts/Index.js"></script>
     <script>
         var index = new IndexPage({
-            eusureorderitemurl: "http://120.24.228.51:8080/20150623/weixin/member/order/info.jhtml",
-            payurl: "http://120.24.228.51:8080/20150623/weixin/payment/submit.jhtml",
-            createorderurl: "http://120.24.228.51:8080/20150623/weixin/member/order/create.jhtml"
+            orderitemurl: "http://120.24.228.51:8080/20150623/weixin/member/order/view.jhtml",
+            payurl: "http://120.24.228.51:8080/20150623/weixin/payment/submit.jhtml"
         });
-        index.RegisterEnsure();
+        index.RegisterOrderInfo();
     </script>
 }

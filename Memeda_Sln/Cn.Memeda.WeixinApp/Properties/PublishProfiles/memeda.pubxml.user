@@ -13,7 +13,7 @@
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="bin/Cn.Memeda.WeixinApp.dll">
-      <publishTime>07/09/2015 23:55:03</publishTime>
+      <publishTime>07/13/2015 21:36:09</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/23/2015 17:47:22</publishTime>
@@ -247,7 +247,7 @@
       <publishTime>07/11/2015 20:38:39</publishTime>
     </File>
     <File Include="Scripts/Index.js">
-      <publishTime>07/12/2015 09:18:19</publishTime>
+      <publishTime>07/14/2015 07:00:53</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>06/24/2015 21:20:12</publishTime>
@@ -331,7 +331,7 @@
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/11/2015 22:28:00</publishTime>
+      <publishTime>07/14/2015 20:48:20</publishTime>
     </File>
     <File Include="Views/Home/Location.cshtml">
       <publishTime>07/05/2015 21:12:35</publishTime>
@@ -343,13 +343,16 @@
       <publishTime>07/12/2015 08:10:51</publishTime>
     </File>
     <File Include="Views/Order/Info.cshtml">
-      <publishTime>07/12/2015 08:11:00</publishTime>
+      <publishTime>07/13/2015 21:21:36</publishTime>
+    </File>
+    <File Include="Views/Order/Pay.cshtml">
+      <publishTime>07/13/2015 21:55:20</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/10/2015 21:34:33</publishTime>
+      <publishTime>07/12/2015 09:34:37</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>06/23/2015 17:47:22</publishTime>

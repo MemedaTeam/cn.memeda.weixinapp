@@ -11,6 +11,8 @@
         this.ShopCarCount = option.hasOwnProperty("ShopCarCount") && option.ShopCarCount || "";
         this.payurl = option.hasOwnProperty("payurl") && option.payurl || "";
         this.addcar = option.hasOwnProperty("addcar") && option.addcar || "";
+        this.eusureorderitemurl = option.hasOwnProperty("eusureorderitemurl") && option.eusureorderitemurl || "";
+        this.createorderurl = option.hasOwnProperty("createorderurl") && option.createorderurl || "";
     };
     indexPage.prototype = {
         GetParameter: function (pName) {
@@ -90,7 +92,7 @@
                         //    //html += '<a href="/order/info">立即支付</a>';
                         //} else
                         if (item.order.paymentStatus == "unpaid") {
-                            html += '<a href="/order/info/?sn=' + item.order.sn +
+                            html += '<a href="/order/pay/?sn=' + item.order.sn +
                             '">立即支付</a>';
                         } else if (item.order.shippingStatus == "unshipped") {
                             html += "<span>" + item.order.paymentStatus + "</span> ";
@@ -135,6 +137,64 @@
 
                     parentEle.html(html);
                 }
+            });
+        },
+        getEnsureInfo: function () {
+            var that = this;
+            that.innerAjax(that.eusureorderitemurl, {}, function (data) {
+                var html = '';
+                var item = data;
+                //html += "<div class=\"order_number\">" +
+                //    "<div class=\"order_number_con\">" +
+                //    "<p>订单号：" + item.order.sn + "</p>" +
+                //    "<span>下单时间：" + item.order.createDate + "</span> ";
+                ////    "<div class=\"pay_block\">";
+                ////if (item.order.paymentStatus == "unpaid") {
+                ////    html += '<a href="/order/info/?sn=' + item.order.sn +
+                ////    '">立即支付</a>';
+                ////} else if (item.order.shippingStatus == "unshipped") {
+                ////    html += "<span>" + item.order.paymentStatus + "</span> ";
+                ////}
+                ////"</div>" +
+                //html += "</div>" +
+                //"</div>";
+                if ('merchants' in item && item.merchants.length > 0) {
+                    html += ' <div class="order_block container">';
+                    for (var j = 0; j < item.merchants.length; j++) {
+                        var shop = item.merchants[j];
+                        html += '<div class="store_mess">' +
+                            '<img src="' + shop.img + '" class="fl"/>' +
+                            '<p class="fl">' + shop.merchantsName + '</p>' +
+                            '<div class="clear"></div>' +
+                            '</div>' +
+                            '<ul class="order_list_ul">';
+                        if ('orderItem' in shop && shop.orderItem.length > 0) {
+                            for (var k = 0; k < shop.orderItem.length; k++) {
+                                var orderItem = shop.orderItem[k];
+                                html += '<li>' +
+                                    '<img src="' + orderItem.thumbnail + '" class="fl"/>' +
+                                    '<div class="order_con fl">' +
+                                    '<p>' + orderItem.name + '<i class="fr">￥<font>' + orderItem.price + '</font>/份</i></p>' +
+                                    '<span>X<font>' + orderItem.quantity + '</font></span>' +
+                                    '<div class="count_order">小计：￥' + orderItem.subtotal + '</div>' +
+                                    '</div>' +
+                                    '<div class="clear"></div>' +
+                                    '</li>';
+                            }
+                        }
+                        html += '</ul>';
+                    }
+                    html += '</div>';
+                }
+                html += '<div class="hejght_15"></div>';
+                $("#allprice").text("￥" + item.price);
+                //html += '<div class="order_account_bot container">' +
+                //        '<span class="goods_mount">一共<i>' + ('quantity' in item.order ? item.order.quantity : 3) + '</i>件商品</span>' +
+                //        '<span>合计：￥' + item.order.amountPaid + '</span>' +
+                //        '</div>';
+                $("#sendtime").before(html).find("span").html(data.deliveryTime);
+                $("#submitorder").attr("data-ct", data.cartToken).attr("data-rid", data.receiverId)
+                    .attr("data-pid", data.paymentMethodId).attr("data-ship", data.shippingMethodId);
             });
         },
         getOrderItemInfo: function () {
@@ -200,7 +260,19 @@
         },
         getPay: function () {
             var that = this;
-            this.innerAjax(this.payurl, { "type": "payment", "paymentPluginId": "weixinpayPlugin", "sn": that.getParameter("sn") }, function (data) {
+            this.innerAjax(this.payurl, { "type": "payment", "paymentPluginId": "weixinpayPlugin", "sn": that.GetParameter("sn") }, function (data) {
+                //// 配置验证 start
+                //wx.config({
+                //    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                //    appId: "wx0e475aceab8cf432", // 必填，公众号的唯一标识
+                //    timestamp: data.timestamp, // 必填，生成签名的时间戳
+                //    nonceStr: data.nonceStr, // 必填，生成签名的随机串
+                //    signature: data.signType,// 必填，签名，见附录1
+                //    jsApiList: ["chooseWXPay"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                //});
+                //// 配置验证 end
+                
+                // 调用支付 start
                 function onBridgeReady() {
                     WeixinJSBridge.invoke(
                         'getBrandWCPayRequest', {
@@ -212,7 +284,11 @@
                             "paySign": data.paySign //微信签名 
                         },
                         function (res) {
-                            if (res.err_msg == "get_brand_wcpay_request:ok") { }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
+                            WeixinJSBridge.log(res.err_msg);
+                            alert(res.err_code+res.err_desc+res.err_msg);
+                            if (res.err_msg == "get_brand_wcpay_request:ok") {
+
+                            }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
                         }
                     );
                 }
@@ -226,12 +302,14 @@
                 } else {
                     onBridgeReady();
                 }
+                // 调用支付 end
+                
             }, "post");
         },
         innerAjax: function (url, data, callback, mtd) {
             data = data || {};
             mtd = mtd || method;
-            data.openid = GetOpenid();
+            data.openid = GetOpenid() || "123456";
             $.ajax({
                 method: mtd,
                 url: url,
@@ -407,6 +485,21 @@
                     }, "post");
                 });
             }
+        },
+        RegisterEnsure: function () {
+            var that = this;
+            that.getEnsureInfo();
+            $("#submitorder").click(function () {
+                var button = this;
+                that.innerAjax(that.createorderurl, { "cartToken": $(button).attr("data-ct"), "paymentMethodId": $(button).attr("data-pid"), "receiverId": $(button).attr("data-rid"), "shippingMethodId": $(button).attr("data-ship") }, function (data) {
+                    var p = data;
+                    console.log(p);
+                    var sn = p.content;
+                    if ("content" in data && "type" in data && data.type == "success") {
+                        location.href = '/order/pay?sn=' + sn;
+                    }
+                }, "post");
+            });
         }
     };
     window.IndexPage = indexPage;

@@ -17,5 +17,11 @@ namespace Cn.Memeda.WeixinApp.Controllers
         {
             return View();
         }
+
+        public ActionResult Pay()
+        {
+            return View();
+        }
+
     }
 }
