@@ -245,12 +245,16 @@
                     html += '</div>';
                 }
                 html += '<div class="hejght_15"></div>';
-                $("#allprice").text("￥" + item.order.amountPaid);
+                $("#allprice").text("￥" + item.order.amountPayable);
                 //html += '<div class="order_account_bot container">' +
                 //        '<span class="goods_mount">一共<i>' + ('quantity' in item.order ? item.order.quantity : 3) + '</i>件商品</span>' +
                 //        '<span>合计：￥' + item.order.amountPaid + '</span>' +
                 //        '</div>';
                 $("#sendtime").before(html);
+                if (item.order.orderStatus == "confirmed") {
+                    $(".pay_style,.submit_order").hide();
+                    document.title = "订单详情";
+                }
             });
         },
         getShopCartCount: function () {
@@ -261,23 +265,12 @@
         getPay: function () {
             var that = this;
             this.innerAjax(this.payurl, { "type": "payment", "paymentPluginId": "weixinpayPlugin", "sn": that.GetParameter("sn") }, function (data) {
-                //// 配置验证 start
-                //wx.config({
-                //    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-                //    appId: "wx0e475aceab8cf432", // 必填，公众号的唯一标识
-                //    timestamp: data.timestamp, // 必填，生成签名的时间戳
-                //    nonceStr: data.nonceStr, // 必填，生成签名的随机串
-                //    signature: data.signType,// 必填，签名，见附录1
-                //    jsApiList: ["chooseWXPay"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-                //});
-                //// 配置验证 end
-                
                 // 调用支付 start
                 function onBridgeReady() {
                     WeixinJSBridge.invoke(
                         'getBrandWCPayRequest', {
                             "appId": "wx0e475aceab8cf432",     //公众号名称，由商户传入     
-                            "timeStamp": data.timestamp,         //时间戳，自1970年以来的秒数     
+                            "timeStamp": data.timeStamp,         //时间戳，自1970年以来的秒数     
                             "nonceStr": data.nonceStr, //随机串     
                             "package": data.package,
                             "signType": data.signType,         //微信签名方式:     
@@ -287,7 +280,7 @@
                             WeixinJSBridge.log(res.err_msg);
                             alert(res.err_code+res.err_desc+res.err_msg);
                             if (res.err_msg == "get_brand_wcpay_request:ok") {
-
+                                location.href = "/order/";
                             }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
                         }
                     );
@@ -426,7 +419,7 @@
                 /*商品详细信息弹出层 */
                 $(".producter_con_shop").on("click", "li>a", function () {
                     //数量置0
-                    $(".now_count").html("0");
+                    $(".now_count").html("1");
                     //改变图片
                     $(".product_picture img").attr('src', $(this).children(".fruit_img").attr("src"));
                     /*改变店铺名*/
