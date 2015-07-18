@@ -244,10 +244,10 @@
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="Scripts/common.js">
-      <publishTime>07/11/2015 20:38:39</publishTime>
+      <publishTime>07/18/2015 15:36:16</publishTime>
     </File>
     <File Include="Scripts/Index.js">
-      <publishTime>07/15/2015 22:50:58</publishTime>
+      <publishTime>07/18/2015 16:01:16</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>06/24/2015 21:20:12</publishTime>
@@ -280,10 +280,10 @@
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="Scripts/shop/car.js">
-      <publishTime>07/11/2015 16:56:24</publishTime>
+      <publishTime>07/18/2015 15:35:19</publishTime>
     </File>
     <File Include="Scripts/shop/shop.js">
-      <publishTime>07/10/2015 21:34:33</publishTime>
+      <publishTime>07/18/2015 15:35:19</publishTime>
     </File>
     <File Include="Scripts/template-native.js">
       <publishTime>07/05/2015 20:31:52</publishTime>
@@ -352,7 +352,7 @@
       <publishTime>06/23/2015 17:47:22</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/12/2015 09:34:37</publishTime>
+      <publishTime>07/18/2015 15:35:19</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>06/23/2015 17:47:22</publishTime>
