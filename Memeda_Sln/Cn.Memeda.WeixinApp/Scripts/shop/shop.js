@@ -25,7 +25,7 @@ function LoadShopInfomation(merchantsId) {
                 var gpsY = data.gpsY;
                 $('#shop-shopkeeper').html(data.name);
                 $('#shop-address').html(data.address);
-                $('#shop-shopkeeper-image').html(data.image);
+                $('#shop-shopkeeper-image').attr("src",data.image);
             }
             else { loginErrorEle.html(data.content); }
         },

@@ -36,6 +36,12 @@ $(document).ready(function (e) {
     });
     //进入支付页面
     $('#btn-go-pay').click(function () {
+        var totalPrice = parseFloat($('#car-goods-price').html());
+        if (totalPrice <= 0)
+        {
+            loginErrorEle.html("您的购物车是空的！")
+            return;
+        }
         //判断是否发送过验证码
         var code='';
         if (hasValidCode) {
@@ -75,7 +81,7 @@ $(document).ready(function (e) {
                 success: function (data) {
                     if (data != null && data.type=='success') {
                         hasValidCode = false;
-                        location.href = "/order/info?openid=" + GetOpenid();
+                        location.href = "/order/info" ;
                     }
                     else { loginErrorEle.html(data.content); }
                 },

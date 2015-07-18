@@ -114,7 +114,7 @@
                                     for (var k = 0; k < shop.orderItem.length; k++) {
                                         var orderItem = shop.orderItem[k];
                                         html += '<li>' +
-                                            '<img src="' + orderItem.thumbnail + '" class="fl"/>' +
+                                            '<img src="' + orderItem.image + '" class="fl"/>' +
                                             '<div class="order_con fl">' +
                                             '<p>' + orderItem.name + '<i class="fr">￥<font>' + orderItem.price + '</font>/份</i></p>' +
                                             '<span>X<font>' + orderItem.quantity + '</font></span>' +
@@ -172,7 +172,7 @@
                             for (var k = 0; k < shop.orderItem.length; k++) {
                                 var orderItem = shop.orderItem[k];
                                 html += '<li>' +
-                                    '<img src="' + orderItem.thumbnail + '" class="fl"/>' +
+                                    '<img src="' + orderItem.image + '" class="fl"/>' +
                                     '<div class="order_con fl">' +
                                     '<p>' + orderItem.name + '<i class="fr">￥<font>' + orderItem.price + '</font>/份</i></p>' +
                                     '<span>X<font>' + orderItem.quantity + '</font></span>' +
@@ -230,7 +230,7 @@
                             for (var k = 0; k < shop.orderItem.length; k++) {
                                 var orderItem = shop.orderItem[k];
                                 html += '<li>' +
-                                    '<img src="' + orderItem.thumbnail + '" class="fl"/>' +
+                                    '<img src="' + orderItem.image + '" class="fl"/>' +
                                     '<div class="order_con fl">' +
                                     '<p>' + orderItem.name + '<i class="fr">￥<font>' + orderItem.price + '</font>/份</i></p>' +
                                     '<span>X<font>' + orderItem.quantity + '</font></span>' +

@@ -1,6 +1,6 @@
 // JavaScript Document
 $(document).ready(function (e) {
-    SetCookie("openid", "123456", 7);
+    //SetCookie("openid", "pkN2yMNAruJ5pw8PwLpY", 7);
 
     //进入购物车
     $("#btn-goto-car").click(function () {
@@ -14,14 +14,14 @@ function BindAddToCarEvent()
     $(".count_odd").click(function () {
         var product_account = parseInt($(".now_count").text());
         var carGoodsCount = parseInt($("#btn-goto-car>span").html());
-        if (product_account >= 1) {
+        if (product_account >1) {
             product_account = product_account - 1;
             carGoodsCount = carGoodsCount - 1;
             $(".now_count").text(product_account)
             $(".car_shop span").text(carGoodsCount);
         }
         else {
-            product_account = 0;
+            product_account = 1;
             $(".now_count").text(product_account);
             $(".count_group").css("z-index", "1");
             $(".button_add_car").css("z-index", "2");
@@ -30,12 +30,17 @@ function BindAddToCarEvent()
     });
     //增加商品
     $(".count_add").click(function () {
+
         var product_account = parseInt($(".now_count").text());
-        var carGoodsCount = parseInt($("#btn-goto-car>span").html());
         product_account = product_account + 1;
-        carGoodsCount = carGoodsCount + 1;
         $(".now_count").text(product_account)
-        $(".car_shop span").text(carGoodsCount);
+
+        //购物车商品数量
+        var carGoodsEle=$("#btn-goto-car>span");
+        var carGoodsCount = parseInt(carGoodsEle.html());
+        carGoodsCount = carGoodsCount + 1;
+        carGoodsEle.text(carGoodsCount);
+
         car_span();
     });
     //增加商品到购物车
@@ -61,10 +66,11 @@ function ValidPhone(phoneNumber) {
 
 //获取购物车商品数量
 function GetCarGoodsCount() {
+    var openid= GetOpenid();
     $.ajax({
         type: "get",
         url: " http://120.24.228.51:8080/20150623/weixin/cart/quantity.jhtml",
-        data: { openid: GetOpenid() },
+        data: { openid:openid },
         dataType: "json",
         crossDomain: true,
         beforeSend: function () { },
@@ -172,7 +178,7 @@ function LoadGoodsList(goodsList) {
 function BindGoodsListEvent(goodsListEle) {
     //商品信息弹出层
     goodsListEle.click(function () {
-        $(".now_count").html("0");
+        $(".now_count").html("1");
         //改变图片
         var urls = $(this).children(".fruit_img").attr("url");
         var href2 = '<img  src="' + urls + '" />';
@@ -187,6 +193,12 @@ function BindGoodsListEvent(goodsListEle) {
         /*商品规格*/
         $(".weight span").text($(this).children("p").children("span").children(".weight").text());
         ShowGoodsDetail($(this).attr("value"));
+
+        //购物车商品数量
+        var carGoodsEle = $("#btn-goto-car>span");
+        var carGoodsCount = parseInt(carGoodsEle.html());
+        carGoodsCount = carGoodsCount + 1;
+        carGoodsEle.text(carGoodsCount);
     });
     ClearThirdBorderRight(goodsListEle);
     CloseGoodsDetail();
@@ -216,6 +228,7 @@ function CloseGoodsDetail()
 {
     //关闭弹出层
     $(".close_detail").click(function () {
+        GetCarGoodsCount();
         HidePop();
     })
 }
