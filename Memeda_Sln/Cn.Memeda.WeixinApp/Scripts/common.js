@@ -1,6 +1,6 @@
 // JavaScript Document
 $(document).ready(function (e) {
-    SetCookie("openid", "123456", 7);
+    //SetCookie("openid", "123456", 7);
 
     //进入购物车
     $("#btn-goto-car").click(function () {
