@@ -76,7 +76,7 @@
         },
         getAllOrderList: function (parentEle, paymentStatus, shippingStatus) {
             var that = this;
-            that.innerAjax(that.orderList, { "paymentStatus": paymentStatus, "shippingStatus": shippingStatus, "openid": "123456" }, function (data) {
+            that.innerAjax(that.orderList, { "paymentStatus": paymentStatus, "shippingStatus": shippingStatus }, function (data) {
                 data = data || {};
                 if ('content' in data && data.content.length > 0) {
                     var html = '';
@@ -131,8 +131,8 @@
                         }
                         html += '<div class="order_account_bot container">' +
                                 '<span class="goods_mount">一共<i>' + ('quantity' in item.order ? item.order.quantity : 3) + '</i>件商品</span>' +
-                                '<span>合计：￥' + item.order.amountPaid + '</span>' +
-                                '</div>';
+                                '<span>合计：￥' + item.order.amountPayable + '</span>' +
+                                '</div><div class="hejght_15"></div>';
                     }
 
                     parentEle.html(html);
