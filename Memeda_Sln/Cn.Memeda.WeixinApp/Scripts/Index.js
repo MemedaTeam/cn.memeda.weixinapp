@@ -305,7 +305,7 @@
         innerAjax: function (url, data, callback, mtd) {
             data = data || {};
             mtd = mtd || method;
-            data.openid = GetOpenid() || 'oTc0suJ_pkN2yMNAruJ5pw8PwLpY';
+            data.openid = GetOpenid();
             url = this.host + url;
             $.ajax({
                 method: mtd,
