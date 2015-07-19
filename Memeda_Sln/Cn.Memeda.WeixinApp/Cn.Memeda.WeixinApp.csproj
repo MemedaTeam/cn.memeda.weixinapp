@@ -210,6 +210,7 @@
     <Content Include="Content\images\s_27.png" />
     <Content Include="Content\images\s_30.png" />
     <Content Include="Content\images\t_13.jpg" />
+    <Content Include="Content\load4.css" />
     <Content Include="Content\public.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -267,7 +268,6 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Info.cshtml" />
     <Content Include="Views\Shop\Car.cshtml" />
-    <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Order\Pay.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -13,7 +13,7 @@ $(document).ready(function (e) {
 function LoadShopInfomation(merchantsId) {
     $.ajax({
         type: "Get",
-        url: " http://120.24.228.51:8080/20150623/weixin/merchants/getMerchantsById.jhtml",
+        url: " http://s.memeda.cn/weixin/merchants/getMerchantsById.jhtml",
         data: { merchantsId: merchantsId,openid:GetOpenid() },
         dataType: "json",
         crossDomain: true,

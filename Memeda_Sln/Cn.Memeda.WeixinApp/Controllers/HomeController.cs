@@ -18,17 +18,17 @@ namespace Cn.Memeda.WeixinApp.Controllers
             return View();
         }
 
-        public ActionResult Test()
-        {
-            return View();
-        }
-
-        //public ActionResult About()
+        //public ActionResult Test()
         //{
-        //    ViewBag.Message = "Your application description page.";
-
         //    return View();
         //}
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
 
         //public ActionResult Contact()
         //{

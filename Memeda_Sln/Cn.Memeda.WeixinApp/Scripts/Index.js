@@ -2,17 +2,18 @@
     var method = "get";
     var indexPage = function (option) {
         this.paras = option || {};
-        this.indexcommuntityUrl = option.hasOwnProperty("indexcommuntityUrl") && option.indexcommuntityUrl || "";
-        this.communtityListUrl = option.hasOwnProperty("communtityListUrl") && option.communtityListUrl || "";
-        this.merchantsList = option.hasOwnProperty("merchantsList") && option.merchantsList || "";
-        this.productlist = option.hasOwnProperty("productlist") && option.productlist || "";
-        this.orderList = option.hasOwnProperty("orderList") && option.orderList || "";
-        this.orderitemurl = option.hasOwnProperty("orderitemurl") && option.orderitemurl || "";
-        this.ShopCarCount = option.hasOwnProperty("ShopCarCount") && option.ShopCarCount || "";
-        this.payurl = option.hasOwnProperty("payurl") && option.payurl || "";
-        this.addcar = option.hasOwnProperty("addcar") && option.addcar || "";
-        this.eusureorderitemurl = option.hasOwnProperty("eusureorderitemurl") && option.eusureorderitemurl || "";
-        this.createorderurl = option.hasOwnProperty("createorderurl") && option.createorderurl || "";
+        this.host = 'http://s.memeda.cn';
+        this.indexcommuntityUrl = option.hasOwnProperty("indexcommuntityUrl") && option.indexcommuntityUrl || "/weixin/community/index_community.jhtml";
+        this.communtityListUrl = option.hasOwnProperty("communtityListUrl") && option.communtityListUrl || "/weixin/community/list.jhtml";
+        this.merchantsList = option.hasOwnProperty("merchantsList") && option.merchantsList || "/weixin/merchants/list.jhtml?communityId=";
+        this.productlist = option.hasOwnProperty("productlist") && option.productlist || "/weixin/product/list/{cata}.jhtml";
+        this.orderList = option.hasOwnProperty("orderList") && option.orderList || "/weixin/member/order/list.jhtml";
+        this.orderitemurl = option.hasOwnProperty("orderitemurl") && option.orderitemurl || "/weixin/member/order/view.jhtml";
+        this.ShopCarCount = option.hasOwnProperty("ShopCarCount") && option.ShopCarCount || "/weixin/cart/quantity.jhtml";
+        this.payurl = option.hasOwnProperty("payurl") && option.payurl || "/weixin/payment/submit.jhtml";
+        this.addcar = option.hasOwnProperty("addcar") && option.addcar || "/weixin/cart/add.jhtml";
+        this.eusureorderitemurl = option.hasOwnProperty("eusureorderitemurl") && option.eusureorderitemurl || "/weixin/member/order/info.jhtml";
+        this.createorderurl = option.hasOwnProperty("createorderurl") && option.createorderurl || "/weixin/member/order/create.jhtml";
     };
     indexPage.prototype = {
         GetParameter: function (pName) {
@@ -36,6 +37,7 @@
             });
         },
         getmerchantList: function (id) {
+            LoadStatusShow();
             var that = this;
             that.innerAjax(that.merchantsList + id, {}, function (data) {
                 var html = template("shopitem", data);
@@ -46,43 +48,39 @@
                         $(imglist[i]).remove();
                     }
                 });
+                LoadStatusHide();
             });
         },
         getCommunitityList: function (sn) {
+            LoadStatusShow();
             var that = this;
             that.innerAjax(that.communtityListUrl, { "sn": sn }, function (data) {
                 var list = { "content": data };
                 var html = template("locationitem", list);
                 $("#locationlist").html(html);
+                LoadStatusHide();
             });
-            //$.ajax({
-            //    method: method,
-            //    url: that.communtityListUrl,
-            //    data: { "sn": sn },
-            //    success: function (data) {
-            //        var list = { "content": data };
-            //        var html = template("locationitem", list);
-            //        $("#locationlist").html(html);
-            //    }
-            //});
         },
         getProductList: function (cataid, parentEle) {
+            LoadStatusShow();
             var that = this;
             that.innerAjax(that.productlist.replace("{cata}", cataid), {}, function (data) {
                 console.log(data);
                 var html = template("productitem", data);
                 parentEle.find("ul").html(html);
+                LoadStatusHide();
             });
         },
         getAllOrderList: function (parentEle, paymentStatus, shippingStatus) {
+            LoadStatusShow();
             var that = this;
-            that.innerAjax(that.orderList, { "paymentStatus": paymentStatus, "shippingStatus": shippingStatus, "openid": "123456" }, function (data) {
+            that.innerAjax(that.orderList, { "paymentStatus": paymentStatus, "shippingStatus": shippingStatus }, function (data) {
                 data = data || {};
                 if ('content' in data && data.content.length > 0) {
                     var html = '';
                     for (var i = 0; i < data.content.length; i++) {
                         var item = data.content[i];
-                        html += "<div class=\"order_number\">" +
+                        html += "<div class=\"order_number\" data-sn=" + item.order.sn + ">" +
                             "<div class=\"order_number_con\">" +
                             "<p>订单号：" + item.order.sn + "</p>" +
                             "<span>下单时间：" + item.order.createDate + "</span> " +
@@ -95,13 +93,13 @@
                             html += '<a href="/order/pay/?sn=' + item.order.sn +
                             '">立即支付</a>';
                         } else if (item.order.shippingStatus == "unshipped") {
-                            html += "<span>" + item.order.paymentStatus + "</span> ";
+                            html += "<span>" + item.order.paymentStatusName + "</span> ";
                         }
                         html += "</div>" +
                         "</div>" +
                         "</div>";
                         if ('merchants' in item && item.merchants.length > 0) {
-                            html += ' <div class="order_block container">';
+                            html += ' <div class="order_block container" data-sn=' + item.order.sn + '>';
                             for (var j = 0; j < item.merchants.length; j++) {
                                 var shop = item.merchants[j];
                                 html += '<div class="store_mess">' +
@@ -129,19 +127,21 @@
                             html += '</div>' +
                                 '<div class="dotted_line"></div>';
                         }
-                        html += '<div class="order_account_bot container">' +
+                        html += '<div class="order_account_bot container" data-sn=' + item.order.sn + '>' +
                                 '<span class="goods_mount">一共<i>' + ('quantity' in item.order ? item.order.quantity : 3) + '</i>件商品</span>' +
-                                '<span>合计：￥' + item.order.amountPaid + '</span>' +
-                                '</div>';
+                                '<span>合计：￥' + item.order.amount + '</span>' +
+                                '</div><div class="hejght_15"></div>';
                     }
 
                     parentEle.html(html);
+                    LoadStatusHide();
                 }
             });
         },
         getEnsureInfo: function () {
             var that = this;
             that.innerAjax(that.eusureorderitemurl, {}, function (data) {
+                LoadStatusShow();
                 var html = '';
                 var item = data;
                 //html += "<div class=\"order_number\">" +
@@ -195,9 +195,11 @@
                 $("#sendtime").before(html).find("span").html(data.deliveryTime);
                 $("#submitorder").attr("data-ct", data.cartToken).attr("data-rid", data.receiverId)
                     .attr("data-pid", data.paymentMethodId).attr("data-ship", data.shippingMethodId);
+                LoadStatusHide();
             });
         },
         getOrderItemInfo: function () {
+            LoadStatusShow();
             var that = this;
             that.innerAjax(that.orderitemurl, { "sn": this.GetParameter("sn") }, function (data) {
                 var html = '';
@@ -245,12 +247,17 @@
                     html += '</div>';
                 }
                 html += '<div class="hejght_15"></div>';
-                $("#allprice").text("￥" + item.order.amountPaid);
+                $("#allprice").text("￥" + item.order.amountPayable);
                 //html += '<div class="order_account_bot container">' +
                 //        '<span class="goods_mount">一共<i>' + ('quantity' in item.order ? item.order.quantity : 3) + '</i>件商品</span>' +
                 //        '<span>合计：￥' + item.order.amountPaid + '</span>' +
                 //        '</div>';
                 $("#sendtime").before(html);
+                if (item.order.orderStatus == "confirmed") {
+                    $(".pay_style,.submit_order").hide();
+                    document.title = "订单详情";
+                }
+                LoadStatusHide();
             });
         },
         getShopCartCount: function () {
@@ -261,23 +268,12 @@
         getPay: function () {
             var that = this;
             this.innerAjax(this.payurl, { "type": "payment", "paymentPluginId": "weixinpayPlugin", "sn": that.GetParameter("sn") }, function (data) {
-                //// 配置验证 start
-                //wx.config({
-                //    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-                //    appId: "wx0e475aceab8cf432", // 必填，公众号的唯一标识
-                //    timestamp: data.timestamp, // 必填，生成签名的时间戳
-                //    nonceStr: data.nonceStr, // 必填，生成签名的随机串
-                //    signature: data.signType,// 必填，签名，见附录1
-                //    jsApiList: ["chooseWXPay"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-                //});
-                //// 配置验证 end
-                
                 // 调用支付 start
                 function onBridgeReady() {
                     WeixinJSBridge.invoke(
                         'getBrandWCPayRequest', {
                             "appId": "wx0e475aceab8cf432",     //公众号名称，由商户传入     
-                            "timeStamp": data.timestamp,         //时间戳，自1970年以来的秒数     
+                            "timeStamp": data.timeStamp,         //时间戳，自1970年以来的秒数     
                             "nonceStr": data.nonceStr, //随机串     
                             "package": data.package,
                             "signType": data.signType,         //微信签名方式:     
@@ -285,9 +281,9 @@
                         },
                         function (res) {
                             WeixinJSBridge.log(res.err_msg);
-                            alert(res.err_code+res.err_desc+res.err_msg);
+                            alert(res.err_code + res.err_desc + res.err_msg);
                             if (res.err_msg == "get_brand_wcpay_request:ok") {
-
+                                location.href = "/order/";
                             }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
                         }
                     );
@@ -303,13 +299,14 @@
                     onBridgeReady();
                 }
                 // 调用支付 end
-                
+
             }, "post");
         },
         innerAjax: function (url, data, callback, mtd) {
             data = data || {};
             mtd = mtd || method;
-            data.openid = GetOpenid() || "123456";
+            data.openid = GetOpenid() || 'oTc0suJ_pkN2yMNAruJ5pw8PwLpY';
+            url = this.host + url;
             $.ajax({
                 method: mtd,
                 url: url,
@@ -406,11 +403,14 @@
             if ($("#underwayhref").length > 0) {
                 $("#underwayhref").click(function () {
                     if (loadunderway == 0) {
-                        that.getAllOrderList($("#underway"), '', 'shipped');
+                        that.getAllOrderList($("#underway"), 'shipped');
                     }
                     loadunderway = 1;
                 });
             }
+            $("#order_change").on('click', ".order_number,.order_account_bot,.order_block", function () {
+                location.href = '/order/pay/?sn=' + $(this).attr('data-sn');
+            });
         },
         RegisterOrderInfo: function () {
             var that = this;
@@ -426,7 +426,7 @@
                 /*商品详细信息弹出层 */
                 $(".producter_con_shop").on("click", "li>a", function () {
                     //数量置0
-                    $(".now_count").html("0");
+                    $(".now_count").html("1");
                     //改变图片
                     $(".product_picture img").attr('src', $(this).children(".fruit_img").attr("src"));
                     /*改变店铺名*/

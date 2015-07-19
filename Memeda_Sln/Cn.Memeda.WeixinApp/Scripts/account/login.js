@@ -16,7 +16,7 @@ $(document).ready(function (e) {
             //发送验证码
             $.ajax({
                 type: "post",
-                url: "http://120.24.228.51:8080/20150623/weixin/login/sendSms.jhtml",
+                url: "http://s.memeda.cn/weixin/login/sendSms.jhtml",
                 data: { phone: phoneNumber },
                 dataType: "json",
                 jsonp: "jsoncallback",
@@ -48,7 +48,7 @@ $(document).ready(function (e) {
         var phone=phoneEle.val();
         $.ajax({
             type: "POST",
-            url: " http://120.24.228.51:8080/20150623/weixin/register/submit.jhtml",
+            url: " http://s.memeda.cn/weixin/register/submit.jhtml",
             data: { code: smscode, phone: phone,username:phone},
             dataType: "json",
             jsonp: "jsoncallback",
