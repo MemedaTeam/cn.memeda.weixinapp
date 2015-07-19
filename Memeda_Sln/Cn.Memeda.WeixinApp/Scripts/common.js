@@ -8,13 +8,12 @@ $(document).ready(function (e) {
     });
 });
 //绑定添加商品到购物车的事件
-function BindAddToCarEvent()
-{
+function BindAddToCarEvent() {
     //减少商品
     $(".count_odd").click(function () {
         var product_account = parseInt($(".now_count").text());
         var carGoodsCount = parseInt($("#btn-goto-car>span").html());
-        if (product_account >1) {
+        if (product_account > 1) {
             product_account = product_account - 1;
             carGoodsCount = carGoodsCount - 1;
             $(".now_count").text(product_account)
@@ -36,7 +35,7 @@ function BindAddToCarEvent()
         $(".now_count").text(product_account)
 
         //购物车商品数量
-        var carGoodsEle=$("#btn-goto-car>span");
+        var carGoodsEle = $("#btn-goto-car>span");
         var carGoodsCount = parseInt(carGoodsEle.html());
         carGoodsCount = carGoodsCount + 1;
         carGoodsEle.text(carGoodsCount);
@@ -66,11 +65,11 @@ function ValidPhone(phoneNumber) {
 
 //获取购物车商品数量
 function GetCarGoodsCount() {
-    var openid= GetOpenid();
+    var openid = GetOpenid();
     $.ajax({
         type: "get",
         url: " http://s.memeda.cn/weixin/cart/quantity.jhtml",
-        data: { openid:openid },
+        data: { openid: openid },
         dataType: "json",
         crossDomain: true,
         beforeSend: function () { },
@@ -141,7 +140,7 @@ function LoadShopGoodsList(merchantsId, cataID) {
         beforeSend: function () { },
         success: function (data) {
             if (data != null && data.content != null) {
-                LoadGoodsList(data.content);                
+                LoadGoodsList(data.content);
             }
             else { loginErrorEle.html(data.content); }
         },
@@ -224,8 +223,7 @@ function ShowGoodsDetail(id) {
     $(".product_detail").show();
 }
 //关闭商品详情弹出页
-function CloseGoodsDetail()
-{
+function CloseGoodsDetail() {
     //关闭弹出层
     $(".close_detail").click(function () {
         GetCarGoodsCount();
@@ -241,8 +239,7 @@ function HidePop() {
 //添加商品到购物车
 function AddToCar(id, quantity) {
     var ele = $('#car-error-message');
-    if (quantity == 0)
-    {
+    if (quantity == 0) {
         ele.html('请选择商品数量!');
         return;
     }
@@ -250,7 +247,7 @@ function AddToCar(id, quantity) {
     $.ajax({
         type: "Post",
         url: " http://s.memeda.cn/weixin/cart/add.jhtml",
-        data: { id: id, quantity: quantity,openid:openid },
+        data: { id: id, quantity: quantity, openid: openid },
         dataType: "json",
         crossDomain: true,
         beforeSend: function () { },
@@ -273,7 +270,18 @@ function car_span(carEle) {
     }
 }
 //进入购物车
-function GoToCar()
-{
-    location.href = "/shop/car?openid="+GetOpenid();
+function GoToCar() {
+    location.href = "/shop/car?openid=" + GetOpenid();
+}
+
+var loadstatus = 0;
+function LoadStatusShow() {
+    $("#load").show();
+    if (!loadstatus) {
+        var w = $(window).width(), h = $(window).height();
+        $("#load").css("height", h - 44).find(".load-container").css("left", (w - 100) / 2).css("top", (h - 100) / 2);
+    }
+}
+function LoadStatusHide() {
+    $("#load").hide();
 }

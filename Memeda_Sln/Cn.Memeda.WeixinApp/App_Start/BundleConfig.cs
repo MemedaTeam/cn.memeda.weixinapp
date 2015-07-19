@@ -36,6 +36,7 @@ namespace Cn.Memeda.WeixinApp
                       "~/Content/bootstrap.css",
                       "~/Content/public.css",
                       "~/content/common.css",
+                      "~/content/load4.css",
                       "~/Content/site.css"));
         }
     }

@@ -2,6 +2,7 @@
     var method = "get";
     var indexPage = function (option) {
         this.paras = option || {};
+        this.host = 'http://s.memeda.cn';
         this.indexcommuntityUrl = option.hasOwnProperty("indexcommuntityUrl") && option.indexcommuntityUrl || "/weixin/community/index_community.jhtml";
         this.communtityListUrl = option.hasOwnProperty("communtityListUrl") && option.communtityListUrl || "/weixin/community/list.jhtml";
         this.merchantsList = option.hasOwnProperty("merchantsList") && option.merchantsList || "/weixin/merchants/list.jhtml?communityId=";
@@ -36,6 +37,7 @@
             });
         },
         getmerchantList: function (id) {
+            LoadStatusShow();
             var that = this;
             that.innerAjax(that.merchantsList + id, {}, function (data) {
                 var html = template("shopitem", data);
@@ -46,35 +48,31 @@
                         $(imglist[i]).remove();
                     }
                 });
+                LoadStatusHide();
             });
         },
         getCommunitityList: function (sn) {
+            LoadStatusShow();
             var that = this;
             that.innerAjax(that.communtityListUrl, { "sn": sn }, function (data) {
                 var list = { "content": data };
                 var html = template("locationitem", list);
                 $("#locationlist").html(html);
+                LoadStatusHide();
             });
-            //$.ajax({
-            //    method: method,
-            //    url: that.communtityListUrl,
-            //    data: { "sn": sn },
-            //    success: function (data) {
-            //        var list = { "content": data };
-            //        var html = template("locationitem", list);
-            //        $("#locationlist").html(html);
-            //    }
-            //});
         },
         getProductList: function (cataid, parentEle) {
+            LoadStatusShow();
             var that = this;
             that.innerAjax(that.productlist.replace("{cata}", cataid), {}, function (data) {
                 console.log(data);
                 var html = template("productitem", data);
                 parentEle.find("ul").html(html);
+                LoadStatusHide();
             });
         },
         getAllOrderList: function (parentEle, paymentStatus, shippingStatus) {
+            LoadStatusShow();
             var that = this;
             that.innerAjax(that.orderList, { "paymentStatus": paymentStatus, "shippingStatus": shippingStatus }, function (data) {
                 data = data || {};
@@ -82,7 +80,7 @@
                     var html = '';
                     for (var i = 0; i < data.content.length; i++) {
                         var item = data.content[i];
-                        html += "<div class=\"order_number\">" +
+                        html += "<div class=\"order_number\" data-sn=" + item.order.sn + ">" +
                             "<div class=\"order_number_con\">" +
                             "<p>订单号：" + item.order.sn + "</p>" +
                             "<span>下单时间：" + item.order.createDate + "</span> " +
@@ -95,13 +93,13 @@
                             html += '<a href="/order/pay/?sn=' + item.order.sn +
                             '">立即支付</a>';
                         } else if (item.order.shippingStatus == "unshipped") {
-                            html += "<span>" + item.order.paymentStatus + "</span> ";
+                            html += "<span>" + item.order.paymentStatusName + "</span> ";
                         }
                         html += "</div>" +
                         "</div>" +
                         "</div>";
                         if ('merchants' in item && item.merchants.length > 0) {
-                            html += ' <div class="order_block container">';
+                            html += ' <div class="order_block container" data-sn=' + item.order.sn + '>';
                             for (var j = 0; j < item.merchants.length; j++) {
                                 var shop = item.merchants[j];
                                 html += '<div class="store_mess">' +
@@ -129,19 +127,21 @@
                             html += '</div>' +
                                 '<div class="dotted_line"></div>';
                         }
-                        html += '<div class="order_account_bot container">' +
+                        html += '<div class="order_account_bot container" data-sn=' + item.order.sn + '>' +
                                 '<span class="goods_mount">一共<i>' + ('quantity' in item.order ? item.order.quantity : 3) + '</i>件商品</span>' +
-                                '<span>合计：￥' + item.order.amountPayable + '</span>' +
+                                '<span>合计：￥' + item.order.amount + '</span>' +
                                 '</div><div class="hejght_15"></div>';
                     }
 
                     parentEle.html(html);
+                    LoadStatusHide();
                 }
             });
         },
         getEnsureInfo: function () {
             var that = this;
             that.innerAjax(that.eusureorderitemurl, {}, function (data) {
+                LoadStatusShow();
                 var html = '';
                 var item = data;
                 //html += "<div class=\"order_number\">" +
@@ -195,9 +195,11 @@
                 $("#sendtime").before(html).find("span").html(data.deliveryTime);
                 $("#submitorder").attr("data-ct", data.cartToken).attr("data-rid", data.receiverId)
                     .attr("data-pid", data.paymentMethodId).attr("data-ship", data.shippingMethodId);
+                LoadStatusHide();
             });
         },
         getOrderItemInfo: function () {
+            LoadStatusShow();
             var that = this;
             that.innerAjax(that.orderitemurl, { "sn": this.GetParameter("sn") }, function (data) {
                 var html = '';
@@ -255,6 +257,7 @@
                     $(".pay_style,.submit_order").hide();
                     document.title = "订单详情";
                 }
+                LoadStatusHide();
             });
         },
         getShopCartCount: function () {
@@ -302,8 +305,8 @@
         innerAjax: function (url, data, callback, mtd) {
             data = data || {};
             mtd = mtd || method;
-            data.openid = GetOpenid();
-            url += 'http://s.memeda.cn' + url;
+            data.openid = GetOpenid() || 'oTc0suJ_pkN2yMNAruJ5pw8PwLpY';
+            url = this.host + url;
             $.ajax({
                 method: mtd,
                 url: url,
@@ -400,11 +403,14 @@
             if ($("#underwayhref").length > 0) {
                 $("#underwayhref").click(function () {
                     if (loadunderway == 0) {
-                        that.getAllOrderList($("#underway"), '', 'shipped');
+                        that.getAllOrderList($("#underway"), 'shipped');
                     }
                     loadunderway = 1;
                 });
             }
+            $("#order_change").on('click', ".order_number,.order_account_bot,.order_block", function () {
+                location.href = '/order/pay/?sn=' + $(this).attr('data-sn');
+            });
         },
         RegisterOrderInfo: function () {
             var that = this;

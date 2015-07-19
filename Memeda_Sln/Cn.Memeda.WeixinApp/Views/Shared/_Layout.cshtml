@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <title>么么达</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -27,32 +27,6 @@
     </header>
     <!-----------头部结束--------------->
     @RenderBody()
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("么么哒", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-
-        <div class="container body-content">
-                @RenderBody()
-            <hr />
-                <footer>
-                    <p>&copy; @DateTime.Now.Year - 么么哒</p>
-                </footer>
-        </div>*@
     <!--商品详细信息弹出层-->
     <div class="fixed shop-fixed" style="display:none;"></div>
     <div class="product_detail" style="display:none;">
@@ -74,6 +48,11 @@
         </div>
         <div class="clearfix"></div>
         <p class="error-message" id="car-error-message"></p>
+    </div>
+    <div id="load" style="display:none;">
+        <div class="load-container load4">
+            <div class="loader">载入中...</div>
+        </div>
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
