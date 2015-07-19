@@ -1,6 +1,6 @@
 // JavaScript Document
 $(document).ready(function (e) {
-    //SetCookie("openid", "pkN2yMNAruJ5pw8PwLpY", 7);
+    SetCookie("openid", "pkN2yMNAruJ5pw8PwLpY", 7);
 
     //进入购物车
     $("#btn-goto-car").click(function () {
