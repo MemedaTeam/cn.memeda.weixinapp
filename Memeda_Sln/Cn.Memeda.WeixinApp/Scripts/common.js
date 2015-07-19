@@ -69,7 +69,7 @@ function GetCarGoodsCount() {
     var openid= GetOpenid();
     $.ajax({
         type: "get",
-        url: " http://120.24.228.51:8080/20150623/weixin/cart/quantity.jhtml",
+        url: " http://s.memeda.cn/weixin/cart/quantity.jhtml",
         data: { openid:openid },
         dataType: "json",
         crossDomain: true,
@@ -134,7 +134,7 @@ function GetOpenid() {
 function LoadShopGoodsList(merchantsId, cataID) {
     $.ajax({
         type: "Get",
-        url: " http://120.24.228.51:8080/20150623/weixin/product/list/" + cataID + ".jhtml",
+        url: " http://s.memeda.cn/weixin/product/list/" + cataID + ".jhtml",
         data: { merchantsId: merchantsId, openid: GetOpenid() },
         dataType: "json",
         crossDomain: true,
@@ -249,7 +249,7 @@ function AddToCar(id, quantity) {
     var openid = GetOpenid();
     $.ajax({
         type: "Post",
-        url: " http://120.24.228.51:8080/20150623/weixin/cart/add.jhtml",
+        url: " http://s.memeda.cn/weixin/cart/add.jhtml",
         data: { id: id, quantity: quantity,openid:openid },
         dataType: "json",
         crossDomain: true,

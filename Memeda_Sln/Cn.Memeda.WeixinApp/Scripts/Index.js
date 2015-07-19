@@ -2,17 +2,17 @@
     var method = "get";
     var indexPage = function (option) {
         this.paras = option || {};
-        this.indexcommuntityUrl = option.hasOwnProperty("indexcommuntityUrl") && option.indexcommuntityUrl || "";
-        this.communtityListUrl = option.hasOwnProperty("communtityListUrl") && option.communtityListUrl || "";
-        this.merchantsList = option.hasOwnProperty("merchantsList") && option.merchantsList || "";
-        this.productlist = option.hasOwnProperty("productlist") && option.productlist || "";
-        this.orderList = option.hasOwnProperty("orderList") && option.orderList || "";
-        this.orderitemurl = option.hasOwnProperty("orderitemurl") && option.orderitemurl || "";
-        this.ShopCarCount = option.hasOwnProperty("ShopCarCount") && option.ShopCarCount || "";
-        this.payurl = option.hasOwnProperty("payurl") && option.payurl || "";
-        this.addcar = option.hasOwnProperty("addcar") && option.addcar || "";
-        this.eusureorderitemurl = option.hasOwnProperty("eusureorderitemurl") && option.eusureorderitemurl || "";
-        this.createorderurl = option.hasOwnProperty("createorderurl") && option.createorderurl || "";
+        this.indexcommuntityUrl = option.hasOwnProperty("indexcommuntityUrl") && option.indexcommuntityUrl || "/weixin/community/index_community.jhtml";
+        this.communtityListUrl = option.hasOwnProperty("communtityListUrl") && option.communtityListUrl || "/weixin/community/list.jhtml";
+        this.merchantsList = option.hasOwnProperty("merchantsList") && option.merchantsList || "/weixin/merchants/list.jhtml?communityId=";
+        this.productlist = option.hasOwnProperty("productlist") && option.productlist || "/weixin/product/list/{cata}.jhtml";
+        this.orderList = option.hasOwnProperty("orderList") && option.orderList || "/weixin/member/order/list.jhtml";
+        this.orderitemurl = option.hasOwnProperty("orderitemurl") && option.orderitemurl || "/weixin/member/order/view.jhtml";
+        this.ShopCarCount = option.hasOwnProperty("ShopCarCount") && option.ShopCarCount || "/weixin/cart/quantity.jhtml";
+        this.payurl = option.hasOwnProperty("payurl") && option.payurl || "/weixin/payment/submit.jhtml";
+        this.addcar = option.hasOwnProperty("addcar") && option.addcar || "/weixin/cart/add.jhtml";
+        this.eusureorderitemurl = option.hasOwnProperty("eusureorderitemurl") && option.eusureorderitemurl || "/weixin/member/order/info.jhtml";
+        this.createorderurl = option.hasOwnProperty("createorderurl") && option.createorderurl || "/weixin/member/order/create.jhtml";
     };
     indexPage.prototype = {
         GetParameter: function (pName) {
@@ -278,7 +278,7 @@
                         },
                         function (res) {
                             WeixinJSBridge.log(res.err_msg);
-                            alert(res.err_code+res.err_desc+res.err_msg);
+                            alert(res.err_code + res.err_desc + res.err_msg);
                             if (res.err_msg == "get_brand_wcpay_request:ok") {
                                 location.href = "/order/";
                             }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
@@ -296,13 +296,14 @@
                     onBridgeReady();
                 }
                 // 调用支付 end
-                
+
             }, "post");
         },
         innerAjax: function (url, data, callback, mtd) {
             data = data || {};
             mtd = mtd || method;
             data.openid = GetOpenid();
+            url += 'http://s.memeda.cn' + url;
             $.ajax({
                 method: mtd,
                 url: url,

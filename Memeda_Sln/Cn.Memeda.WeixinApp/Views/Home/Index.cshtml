@@ -119,12 +119,12 @@
     <script src="~/Scripts/Index.js"></script>
     <script>
         var index = new IndexPage({
-            indexcommuntityUrl: "http://120.24.228.51:8080/20150623/weixin/community/index_community.jhtml",
-            communtityListUrl: "http://120.24.228.51:8080/20150623/weixin/community/list.jhtml",
-            merchantsList: "http://120.24.228.51:8080/20150623/weixin/merchants/list.jhtml?communityId=",
-            productlist: "http://120.24.228.51:8080/20150623/weixin/product/list/{cata}.jhtml",
-            ShopCarCount: "http://120.24.228.51:8080/20150623/weixin/cart/quantity.jhtml",
-            addcar: "http://120.24.228.51:8080/20150623/weixin/cart/add.jhtml",
+            indexcommuntityUrl: "/weixin/community/index_community.jhtml",
+            communtityListUrl: "/weixin/community/list.jhtml",
+            merchantsList: "/weixin/merchants/list.jhtml?communityId=",
+            productlist: "/weixin/product/list/{cata}.jhtml",
+            ShopCarCount: "/weixin/cart/quantity.jhtml",
+            addcar: "/weixin/cart/add.jhtml",
         });
         index.RegisterIndex();
     </script>

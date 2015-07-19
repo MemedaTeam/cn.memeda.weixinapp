@@ -17,7 +17,7 @@ $(document).ready(function (e) {
             //发送验证码
             $.ajax({
                 type: "post",
-                url: "http://120.24.228.51:8080/20150623/weixin/register/sendSms.jhtml",
+                url: "http://s.memeda.cn/weixin/register/sendSms.jhtml",
                 data: { phone: phoneNumber, openid: GetOpenid() },
                 dataType: "json",
                 jsonp: "jsoncallback",
@@ -72,7 +72,7 @@ $(document).ready(function (e) {
         if (ValidPhone(phoneNumber)) {
             $.ajax({
                 type: "post",
-                url: "http://120.24.228.51:8080/20150623/weixin/member/order/save_receiver.jhtml",
+                url: "http://s.memeda.cn/weixin/member/order/save_receiver.jhtml",
                 data: { areaId:792,openid: GetOpenid(),consignee:name,areaName:city,address:address,phone:phoneNumber,code: code,isDefault:true,zipCode:200000},
                 dataType: "json",
                 jsonp: "jsoncallback",
@@ -96,7 +96,7 @@ $(document).ready(function (e) {
     $('#btn-submit-order').click(function () {
         $.ajax({
             type: "get",
-            url: "http://120.24.228.51:8080/20150623/weixin/member/order/create.jhtml",
+            url: "http://s.memeda.cn/weixin/member/order/create.jhtml",
             data: { openid: GetOpenid() },
             dataType: "json",
             jsonp: "jsoncallback",
@@ -131,7 +131,7 @@ function TimerCountDown() {
 function LoadUserInfomation() {
     $.ajax({
         type: "get",
-        url: "http://120.24.228.51:8080/20150623/weixin/member/order/receiverList.jhtml",
+        url: "http://s.memeda.cn/weixin/member/order/receiverList.jhtml",
         data: { openid: GetOpenid() },
         dataType: "json",
         jsonp: "jsoncallback",
@@ -160,7 +160,7 @@ function LoadUserInfomation() {
 function LoadShopCarInformation() {
     $.ajax({
         type: "get",
-        url: "http://120.24.228.51:8080/20150623/weixin/cart/list.jhtml",
+        url: "http://s.memeda.cn/weixin/cart/list.jhtml",
         data: { openid:GetOpenid() },
         dataType: "json",
         jsonp: "jsoncallback",
@@ -210,7 +210,7 @@ function LoadShopCarInformation() {
                         //    var id = $(this).attr("id");
                         //    $.ajax({
                         //        type: "post",
-                        //        url: " http://120.24.228.51:8080/20150623/weixin/cart/delete.jhtml",
+                        //        url: " http://s.memeda.cn/weixin/cart/delete.jhtml",
                         //        data: { id: id, openid: GetOpenid() },
                         //        dataType: "json",
                         //        crossDomain: true,
@@ -262,7 +262,7 @@ function EditCarGoodsCount(id,count,goodsEle)
 {
     $.ajax({
         type: "post",
-        url: " http://120.24.228.51:8080/20150623/weixin/cart/edit.jhtml",
+        url: " http://s.memeda.cn/weixin/cart/edit.jhtml",
         data: { id: id,quantity:count, openid: GetOpenid() },
         dataType: "json",
         crossDomain: true,
