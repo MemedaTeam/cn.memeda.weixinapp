@@ -322,6 +322,7 @@
             $("#locationlist").on("click", "li", function () {
                 location.href = "/home/index?loc=" + $(this).attr("data-id");
             });
+            
         },
         RegisterIndex: function () {
             var that = this, loadfruit = 0, loadsnack = 0, loadmarket = 0;
