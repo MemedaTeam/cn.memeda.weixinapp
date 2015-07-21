@@ -1,6 +1,6 @@
 // JavaScript Document
 $(document).ready(function (e) {
-    //SetCookie("openid", "pkN2yMNAruJ5pw8PwLpY", 7);
+    SetCookie("openid", "pkN2yMNAruJ5pw8PwLpY", 7);
 
     //进入购物车
     $("#btn-goto-car").click(function () {
@@ -143,6 +143,7 @@ function LoadShopGoodsList(merchantsId, cataID) {
                 LoadGoodsList(data.content);
             }
             else { loginErrorEle.html(data.content); }
+            LoadStatusHide();
         },
         error: function () { },
         complete: function () { }
@@ -238,8 +239,10 @@ function HidePop() {
 }
 //添加商品到购物车
 function AddToCar(id, quantity) {
+    LoadStatusShow();
     var ele = $('#car-error-message');
     if (quantity == 0) {
+        LoadStatusHide();
         ele.html('请选择商品数量!');
         return;
     }
@@ -254,8 +257,11 @@ function AddToCar(id, quantity) {
         success: function (data) {
             ele.html(data.content);
             HidePop();
+            LoadStatusHide();
         },
-        error: function () { },
+        error: function () {
+            LoadStatusHide();
+        },
         complete: function () { }
     });
 }

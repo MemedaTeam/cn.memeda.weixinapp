@@ -10,16 +10,19 @@ namespace Cn.Memeda.WeixinApp.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.ShowBack = true;
             return View();
         }
 
         public ActionResult Info()
         {
+            ViewBag.ShowBack = true;
             return View();
         }
 
         public ActionResult Pay()
         {
+            ViewBag.ShowBack = true;
             return View();
         }
 

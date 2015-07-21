@@ -5,6 +5,8 @@ $(document).ready(function (e) {
     request = GetRequest();
     var cataID = request["cataid"];
     var merchantsId = request["merchantsid"];
+
+    LoadStatusShow();
     LoadShopInfomation(merchantsId);
     LoadShopGoodsList(merchantsId, cataID);
     GetCarGoodsCount();

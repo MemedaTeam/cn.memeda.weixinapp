@@ -12,12 +12,14 @@ namespace Cn.Memeda.WeixinApp.Controllers
         // GET: /Shop/
         public ActionResult Index()
         {
+            ViewBag.ShowBack = true;
             return View();
         }
         //
         // GET: /Shop/
         public ActionResult Car()
         {
+            ViewBag.ShowBack = true;
             ViewBag.subTitle = "购物车";
             return View();
         }

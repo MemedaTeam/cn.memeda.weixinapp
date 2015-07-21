@@ -36,7 +36,7 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 /*内容开始*/
 .content { width: 100%; font-size: 1em; padding-top: 3.666666666666667em; }
 .browser_content { position: relative; padding-top: 6.166666666666667em; }
-.complex { width: 100%; height: 2.5em; line-height: 2.5em; font-size: 1em; background: #ffffff; text-align: center; box-shadow: 1px 3px 3px rgba(195,195,195,0.8); position: fixed; left: 0; top: 3.666666666666667em; z-index: 9999; }
+.complex { width: 100%; height: 2.5em; line-height: 2.5em; font-size: 1em; background: #ffffff; text-align: center; box-shadow: 1px 3px 3px rgba(195,195,195,0.8); position: fixed; left: 0; top: 3.666666666666667em; z-index: 10; }
     .complex span { display: inline-block; font-size: 1.166666666666667em; background: url(/content/images/liu_11.png) no-repeat 0 center; background-size: auto 50%; padding-left: 1.4em; position: relative; padding-right: 0.8em; }
     .complex a { display: inline-block; height: 100%; margin-left: 1.4em; /*position: absolute; top: 0; right: 0;*/ }
         .complex a:hover { text-decoration: none; }
@@ -276,4 +276,21 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
     margin-bottom:6em;
 }
 
+.navbar-toggle {
+  margin-top: -50px;
+}
+.head_mid p {
+    margin:0 auto;
+}
+.head_mid  h1 {
+   -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  margin:10px  0 0;
+}
+.head_mid h5 {
+   -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  margin:0px auto;
+  font-size:17px;
+}
 /*********************** xueqiang 修改 end ********************/

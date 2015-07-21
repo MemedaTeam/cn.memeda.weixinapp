@@ -32,6 +32,7 @@ namespace Cn.Memeda.WeixinApp.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            ViewBag.ShowBack = true;
             ViewBag.subTitle = "一键登录";
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -67,6 +68,7 @@ namespace Cn.Memeda.WeixinApp.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.ShowBack = true;
             return View();
         }
 
