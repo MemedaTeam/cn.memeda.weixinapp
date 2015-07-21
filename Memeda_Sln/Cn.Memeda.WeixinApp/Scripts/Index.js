@@ -395,7 +395,7 @@
             if ($("#underwayhref").length > 0) {
                 $("#underwayhref").click(function () {
                     if (loadunderway == 0) {
-                        that.getAllOrderList($("#underway"), 'shipped');
+                        that.getAllOrderList($("#underway"), 'paymentStatus');
                     }
                     loadunderway = 1;
                 });
