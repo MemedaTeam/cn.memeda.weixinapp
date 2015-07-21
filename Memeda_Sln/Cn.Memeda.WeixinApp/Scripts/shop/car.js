@@ -5,6 +5,7 @@ $(document).ready(function (e) {
     var phoneEle = $('#car-phone-number');
     //send valid code
     $('#btn-car-valid-code').click(function () {
+        LoadStatusShow();
         loginErrorEle.html('');
         var phoneNumber = $('#phone_number').val().trim();
         if (ValidPhone(phoneNumber)) {
@@ -27,8 +28,9 @@ $(document).ready(function (e) {
                     if (data.type == 'success') {
                     }
                     else { loginErrorEle.html(data.content); }
+                    LoadStatusHide();
                 },
-                error: function () { },
+                error: function () { LoadStatusHide(); },
                 complete: function () { }
             });
         }
@@ -36,10 +38,12 @@ $(document).ready(function (e) {
     });
     //进入支付页面
     $('#btn-go-pay').click(function () {
+        LoadStatusShow();
         var totalPrice = parseFloat($('#car-goods-price').html());
         if (totalPrice <= 0)
         {
-            loginErrorEle.html("您的购物车是空的！")
+            loginErrorEle.html("您的购物车是空的！");
+            LoadStatusHide();
             return;
         }
         //判断是否发送过验证码
@@ -48,11 +52,13 @@ $(document).ready(function (e) {
              code = $('#code').val().trim();
             if (code == '') {
                 loginErrorEle.html('请输入验证码！');
+                LoadStatusHide();
                 return;
             }
             var regCode = /^(\d{4})$/;
             if (!regCode.test(code)) {
                 loginErrorEle.html('验证码不正确！');
+                LoadStatusHide();
                 return;
             }
         }
@@ -60,12 +66,14 @@ $(document).ready(function (e) {
         if (name == '')
         {
             loginErrorEle.html('收货人姓名不能为空！');
+            LoadStatusHide();
             return;
         }
         var city = $('#receive-city').val().trim();
         var address = $('#receive-address').val().trim();
         if (city == '' || address=='') {
             loginErrorEle.html('收货人城市和地址不能为空！');
+            LoadStatusHide();
             return;
         }
         var phoneNumber = $('#phone_number').val().trim();
@@ -84,34 +92,16 @@ $(document).ready(function (e) {
                         location.href = "/order/info" ;
                     }
                     else { loginErrorEle.html(data.content); }
+                    LoadStatusHide();
                 },
-                error: function () { },
+                error: function () { LoadStatusHide();},
                 complete: function () { }
             })
         }
     });
+    LoadStatusShow();
     LoadUserInfomation();
     LoadShopCarInformation();
-    //提交订单
-    $('#btn-submit-order').click(function () {
-        $.ajax({
-            type: "get",
-            url: "http://s.memeda.cn/weixin/member/order/create.jhtml",
-            data: { openid: GetOpenid() },
-            dataType: "json",
-            jsonp: "jsoncallback",
-            crossDomain: true,
-            beforeSend: function () { },
-            success: function (data) {
-                if (data != null) {
-                    location.href = "/order/index?openid=" + GetOpenid();
-                }
-                else { loginErrorEle.html(data.content); }
-            },
-            error: function () { },
-            complete: function () { }
-        });
-    });
 });
 var seconds = 0;
 //倒计时
@@ -151,8 +141,9 @@ function LoadUserInfomation() {
                 $('#receive-address').val(data.address);
             }
             else { loginErrorEle.html(data.content); }
+                LoadStatusHide();
         },
-        error: function () { },
+        error: function () { LoadStatusHide(); },
         complete: function () { }
     });
 }
@@ -252,14 +243,16 @@ function LoadShopCarInformation() {
                 });
             }
             else { loginErrorEle.html(data.content); }
+            LoadStatusHide();
         },
-        error: function () { },
+        error: function () { LoadStatusHide(); },
         complete: function () { }
     });
 }
 //修改购物车商品数量
 function EditCarGoodsCount(id,count,goodsEle)
 {
+    LoadStatusShow();
     $.ajax({
         type: "post",
         url: " http://s.memeda.cn/weixin/cart/edit.jhtml",
@@ -280,9 +273,10 @@ function EditCarGoodsCount(id,count,goodsEle)
             else {
                 loginErrorEle.html(data.message.content);
             }
+            LoadStatusHide();
         },
 
-        error: function () { },
+        error: function () { LoadStatusHide(); },
         complete: function () { }
     });
 }
