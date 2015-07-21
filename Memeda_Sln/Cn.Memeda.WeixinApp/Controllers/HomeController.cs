@@ -10,6 +10,7 @@ namespace Cn.Memeda.WeixinApp.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.ShowBack = false;
             return View();
         }
 
