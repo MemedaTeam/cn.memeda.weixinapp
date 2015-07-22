@@ -27,10 +27,10 @@ i { font-style: normal; }
 /*头部标题栏*/
 header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; font-size: 1em; height: 3.666666666666667em; line-height: 3.666666666666667em; text-align: center; color: #fff; border-bottom: 1px solid #e01b01; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; z-index: 9999; }
 .container { position: relative; width: 100%; margin: 0 auto; }
-.pre_icon { height: 1.708333333333333em; position: absolute; left: 12px; top: 0.979166666666667em; display: block; }
+.pre_icon { height: 1.708333333333333em; position: absolute; left: 12px; top: 0.279166666666667em; display: block; }
     .pre_icon img { height: 100%; }
 .head_mid { width: 100%; text-align: center; }
-    .head_mid img { height: 3em; padding-top: 0.7708333333333335em; margin: 0 auto; }
+    .head_mid img { height: 2.5em; padding-top: 0.5em; margin: 0 auto; }
     .head_mid p { font-size: 1.416666666666667em; line-height: 2.588235294117647em; }
 /*头部标题栏结束*/
 /*内容开始*/
@@ -277,20 +277,19 @@ header { width: 100%; background: #ed6a02; position: fixed; left: 0; top: 0; fon
 }
 
 .navbar-toggle {
-  margin-top: -50px;
+  margin-top: -40px;
 }
 .head_mid p {
     margin:0 auto;
 }
-.head_mid  h1 {
-   -webkit-margin-before: 0em;
-  -webkit-margin-after: 0em;
-  margin:10px  0 0;
+.head_mid  .btn-order {
+    position:absolute;
+    top:.5em;
+    right:.5em;
+    border-color:#fff;
+    color:#fff;
+    background-color:transparent;
+    padding:4px 12px;
 }
-.head_mid h5 {
-   -webkit-margin-before: 0em;
-  -webkit-margin-after: 0em;
-  margin:0px auto;
-  font-size:17px;
-}
+
 /*********************** xueqiang 修改 end ********************/
